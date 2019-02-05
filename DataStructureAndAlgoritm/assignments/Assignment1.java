@@ -12,7 +12,7 @@ public class Assignment1 {
 		Integer threshold = Integer.parseInt(input.next());
 		System.out.println("Enter consecutive times:");
 		Integer consecutive = Integer.parseInt(input.next());
-
+		int occurrencecount = 0;
 		while (true) {
 			System.out.println("Entering lines:");
 			String line = input.next();
@@ -25,14 +25,12 @@ public class Assignment1 {
 				continue;
 			}
 			
-			int occurrencecount = 0;
 			String[]  linesplit= line.split(" ");
 			for (String item : linesplit) {
 				if(Integer.parseInt(item)>threshold) {
 					occurrencecount ++;
 				}
 			}
-			
 			if (occurrencecount>consecutive) {
 				System.out.println("Threshold exceeded");
 				break;
