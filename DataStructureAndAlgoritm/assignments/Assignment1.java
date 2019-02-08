@@ -1,6 +1,7 @@
+/* NAME:OMER ORHAN
+ * X419-01: InClass Assignment 1
+*/
 import java.util.Scanner;
-
-//OMER ORHAN
 public class Assignment1 {
 
 	public static void main(String[] args) {
@@ -27,18 +28,14 @@ public class Assignment1 {
 			
 			String[]  linesplit= line.split(" ");
 			for (String item : linesplit) {
-				if(Integer.parseInt(item)>threshold) {
+				if(Integer.parseInt(item)>threshold) {  //Check threshold
 					occurrencecount ++;
 				}
 			}
-			if (occurrencecount>consecutive) {
+			if (occurrencecount>consecutive) {   //check count
 				System.out.println("Threshold exceeded");
 				break;
 			}
-			
-			
-			
-
 		}
 
 	}

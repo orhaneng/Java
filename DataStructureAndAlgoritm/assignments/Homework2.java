@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-
 /*
+ * NAME:OMER ORHAN
  * X419-01: Take-Home Assignment 1
 Assume you are given a function bool hit(int x, int y) that returns true 
 if there was a hit to a ship and false if not. You are to write a function 
@@ -13,6 +12,7 @@ output and the prototype of the function.
  * 
  * 
  */
+import java.util.ArrayList;
 public class Homework2 {
 
 	public static void main(String[] args) {
@@ -50,9 +50,7 @@ public class Homework2 {
 			}
 		}
 		return coordinates;
-
 	}
-
 	public static boolean checkHitShipAssumed(int x, int y, int gridSize) {
 		/*
 		 *Assume you are given a function bool hit(int x, int y) that returns true 
@@ -62,12 +60,9 @@ public class Homework2 {
 		grid[4][2] = 1;
 		grid[4][3] = 1;
 		grid[4][4] = 1;
-
 		if (grid[x][y] == 1) {
 			return true;
 		}
 		return false;
-
 	}
-
 }
