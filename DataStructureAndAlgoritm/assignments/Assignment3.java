@@ -22,8 +22,34 @@ Struct node_t {
 Struct node_t * next;
 Struct node_t next_highest;
 Int val;
+
+Test Cases:
+list             4  1  2  6  10   3 5
+nexthighest      10 10 10 10 5    5 null
+next higher      6  2  6  10 null 5 null 
+
+Next Highest
+	Time complexity:O(N2)(square)
+	Space complexity:O(N)
+Next Higher;
+	Time complexity:O(N2)(square)
+	Space complexity:O(1)
+
+	
+	
 }
  */
+class Node {
+	Node next = null;
+	Node nextHighest = null;
+	Node nextHigher = null;
+
+	int data;
+
+	public Node(int data) {
+		this.data = data;
+	}
+}
 public class Assignment3 {
 
 	public static void main(String[] args) {
@@ -38,7 +64,8 @@ public class Assignment3 {
 
 		// print(root);
 
-		print(findHighest(root),"Highest");
+		print(findHigher(root),"Higher");
+		
 	}
 
 	public static Node findHighestinNext(Node node) {
@@ -59,7 +86,7 @@ public class Assignment3 {
 		while (node != null) {
 			if (node.data >= currentHighest.data) {
 				if (node.next == null) {
-					node.nextHighest = currentHighest;
+					node.nextHighest = null;
 					return root;
 				} else {
 					currentHighest = findHighestinNext(node.next);
@@ -105,14 +132,4 @@ public class Assignment3 {
 
 }
 
-class Node {
-	Node next = null;
-	Node nextHighest = null;
-	Node nextHigher = null;
 
-	int data;
-
-	public Node(int data) {
-		this.data = data;
-	}
-}

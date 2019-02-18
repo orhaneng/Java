@@ -5,6 +5,11 @@ import java.util.PriorityQueue;
 /*
  * X419-01: Homework 4
 1.-Given an unsorted array with N elements find the k-th highest given that k << N.
+Test case:
+List = 10, 2, 32, 40, 5, 1, 70
+4th largest= 10
+Time complexity:O(N)
+Space complexity:O(N)
  */
 public class Homework4 {
 
