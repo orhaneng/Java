@@ -4,33 +4,15 @@ import java.util.Stack;
 
 
 /*
+ * Name: OMER ORHAN
  * X419-01: Homework 3
 	1.-Reverse a queue using recursion.
  	2.-Check for balanced parenthesis on a given string.
  */
 public class Homework3 {
-
-	 static Queue<Integer> queuenew= new LinkedList<Integer>();
-
-	public static void main(String[] args) {
-		Queue<Integer> queue= new LinkedList<Integer>();
-		queue.add(5);
-		queue.add(3);
-		queue.add(9);
-		queue.add(1);
-		
-		final String text = "{<}>";
-		System.out.println("checkparenthesis:"+checkparenthesis(text));
-
-	}
-
-	public static void print(Queue<Integer> queue) {	
-		for(Integer s : queue) { 
-			  System.out.println(s.toString()); 
-			}
-	}
 	
-	
+	static Queue<Integer> queuenew= new LinkedList<Integer>();
+	//1.-Reverse a queue using recursion.
 	public static Queue<Integer> reverse(Queue<Integer> queue){
 		//If it is end of the queue, return queue
 		if(queue.size()==0) {
@@ -43,8 +25,8 @@ public class Homework3 {
 		return queue;
 	}
 	
+	//2.-Check for balanced parenthesis on a given string.
 	public static boolean checkparenthesis(String text) {
-		
 		Stack<String> stack = new Stack<String>();
 		for (int i = 0; i < text.length(); i++) {
 			if(text.charAt(i)=='{'||text.charAt(i)=='<'||text.charAt(i)=='['
