@@ -28,15 +28,17 @@ public class Assignment3 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Node root = new Node(3);
+		Node root = new Node(4);
 		root.next = new Node(1);
-		root.next.next = new Node(10);
-		root.next.next.next = new Node(2);
-		root.next.next.next.next = new Node(5);
+		root.next.next = new Node(2);
+		root.next.next.next = new Node(6);
+		root.next.next.next.next = new Node(10);
+		root.next.next.next.next.next = new Node(3);
+		root.next.next.next.next.next.next = new Node(5);
 
 		// print(root);
 
-		print(findHigher(root));
+		print(findHigher(root),"Higher");
 	}
 
 	public static Node findHighestinNext(Node node) {
@@ -89,11 +91,13 @@ public class Assignment3 {
 		return root;
 	}
 
-	public static void print(Node node) {
+	public static void print(Node node, String funct) {
 		while (node != null) {
 			System.out.println(node.data);
-			System.out.println(node.nextHighest != null ? node.nextHighest.data : "");
-			System.out.println(node.nextHigher != null ? node.nextHigher.data : "");
+			if(funct== "Highest")
+			System.out.println(node.nextHighest != null ? node.nextHighest.data : null);
+			if(funct== "Higher")
+			System.out.println(node.nextHigher != null ? node.nextHigher.data : null);
 			System.out.println("--");
 			node = node.next;
 		}
