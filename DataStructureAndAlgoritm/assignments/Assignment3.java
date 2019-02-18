@@ -38,7 +38,7 @@ public class Assignment3 {
 
 		// print(root);
 
-		print(findHigher(root),"Higher");
+		print(findHighest(root),"Highest");
 	}
 
 	public static Node findHighestinNext(Node node) {
