@@ -1,5 +1,3 @@
-import java.sql.Struct;
-
 /*
  * InClass Exercise 3
 Given a singly linked list with nodes with the following structure: Struct node_t {
