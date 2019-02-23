@@ -21,6 +21,7 @@ Struct node_t * next;
 Struct node_t next_highest;
 Int val;
 
+
 Test Cases:
 list             4  1  2  6  10   3 5
 nexthighest      10 10 10 10 5    5 null
@@ -59,13 +60,11 @@ public class Assignment3 {
 		root.next.next.next.next = new Node(10);
 		root.next.next.next.next.next = new Node(3);
 		root.next.next.next.next.next.next = new Node(5);
-
-		// print(root);
-
 		print(findHigher(root),"Higher");
 		
 	}
 
+	//find highest next
 	public static Node findHighestinNext(Node node) {
 		Node highest = new Node(node.data);
 		while (node != null) {
@@ -76,7 +75,7 @@ public class Assignment3 {
 		}
 		return highest;
 	}
-
+	//section:a look all the list and find the max
 	public static Node findHighest(Node root) {
 		Node node = root;
 		Node currentHighest = findHighestinNext(node);
@@ -97,6 +96,7 @@ public class Assignment3 {
 		return root;
 	}
 
+	//section b:look through the list and the first higher you find you point there
 	public static Node findHigher(Node root) {
 		Node node = root;
 		Node higher = null;
