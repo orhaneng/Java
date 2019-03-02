@@ -1,9 +1,19 @@
-/*
+/* NAME:OMER ORHAN
+ * ASSIGNMENT#4
  * Create a function that flattens a binary tree into a double linked list, 
  * Use the left and right pointers as next and previous pointers respectively. 
  * The function must return the head of the list.
  * 
- */
+ * TIME COMPLEXITY:   O(N)
+ * MEMORY COMPLEXITY: O(N)
+ * TEST CASE:
+ * 				10
+ * 		12               15  
+ * 25		30         
+ * 				  	36	
+ * 
+ * DOUBLE LINKED LIST:25 <-> 12 <-> 30 <-> 10 <-> 36 <-> 15
+ */ 		
 public class Assignment4 {
 	BinaryNode doublyLinkList;
 	static BinaryNode prev = null;

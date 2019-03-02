@@ -1,7 +1,23 @@
-/*
+/* NAME OMER ORHAN     
+ * HOMEWORK#5   
  * Create a function to test if a binary tree is symmetric.
  *  A tree is symmetric if its left subtree is a mirror image of the right subtree.
  * 
+ * TIME COMPLEXITY:  O(N)
+ * MEMORY COMPLEXITY: O(n)
+ * 
+ * TEST CASE1:                         
+ *         1 
+ * 	 2          2
+ *3     4    4      3
+ *RETURNS TRUE
+ *
+ *
+ *TEST CASE2:  
+ *        1 
+ * 	 3          2
+ *3     5    4      3
+ * returns FALSE
  */
 public class homework5 {
 
