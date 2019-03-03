@@ -61,6 +61,7 @@ public class leftBinaryTree {
 		if(node.left!= null) {
 			System.out.println(node.left.data);
 		}
+		//bug what if node.left.right is not empty
 		if(node.left!=null&& node.left.left==null) {
 			getleft(node.right);
 		}else {
