@@ -1,5 +1,14 @@
 package trees;
+/*
+ * Check whether a binary tree is a complete tree or not | Set 2 (Recursive Solution)
+A complete binary tree is a binary tree whose all levels except the last level are 
+completely filled and all the leaves in the last level are all to the left side. 
+More information about complete binary trees can be found here.
+For Example:-
 
+Below tree is a Complete Binary Tree (All nodes till the second last nodes are 
+filled and all leaves are to the left side)
+ */
 public class isComplete {
 
 	public static void main(String[] args) {
