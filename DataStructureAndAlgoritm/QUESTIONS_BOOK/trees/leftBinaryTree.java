@@ -41,6 +41,7 @@ public class leftBinaryTree {
 		root.right.left.right = new Node(7);
 		System.out.println(root.data);
 		getleft(root);
+		//
 		*/
 		
         Node root = new Node(12); 
