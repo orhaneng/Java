@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
 /*
  * -Create a program for simulating the fortune unix command. 
  * -The file that contains fortunes uses % in a single line to separate fortune statements. 
@@ -9,12 +15,19 @@ random, an empty string must be printed.
    -Statements may be multiline and they should be printed verbatim if that is the case.
 As an example:
 Your fortune is bad today!
+
 %
+
 No Fortune Today! Sorry.
+
 %
+
 Today is a good day...
+
 To play the lottery
+
 %
+
 %
 Sorry not much fortune today!
 %
@@ -24,12 +37,42 @@ selected the following must be printed:
 Today is a good day...
 
 To play the lottery
+
+
+TEST CASE:
+N=4
+RESULT=Sorry not much fortune today!
+TIME COMPLEXITY:O(N)
+SPACE COMPLEXITY:O(1)
  */
 public class Assignment5 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		// TODO Auto-generated method stub
+		filereader(4);
+	}
 
+	public static String filereader(int n) {
+		File file = new File("/Users/omerorhan/git/Java/DataStructureAndAlgoritm" + "/assignments/Assignment5text.txt");
+		Scanner sc;
+		try {
+			sc = new Scanner(file);
+			int count = 0;
+			while (sc.hasNextLine()) {
+				String line = sc.nextLine();
+				if ("%".equals(line)) {
+					count++;
+					continue;
+				}
+				if (count == n) {
+					System.out.println(line);
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
 	}
 
 }

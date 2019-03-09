@@ -13,7 +13,8 @@ TEST CASES
 -DIGIT=1234
  EVEN NUMBERS:2,4,12,34,234
  COUNT=5  
-TIME COMPLEXITY:
+TIME COMPLEXITY:O(NLOGN)
+MEMORY COMPLEXITY:O(1)
  */
 public class Homework6 {
 
@@ -22,7 +23,6 @@ public class Homework6 {
 	}
 
 	public static int divideDigit(String digits, int start_index, int lenght, int count) {
-
 		if (lenght == digits.length()) {
 			return count;
 		}
