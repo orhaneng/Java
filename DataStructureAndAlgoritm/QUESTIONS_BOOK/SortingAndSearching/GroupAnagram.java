@@ -45,13 +45,23 @@ public class GroupAnagram {
 	
 	//second solution
 	static String[] sort(String[] array) {
-		HashMap<String, List<String> > hashmap = new HashMap();
+        HashMap<String, List<String> > hashmap = new HashMap<>(); 
 		
 		for(String s : array) {
 			String key = sortChars(s);
-			hashmap.put(key, Arrays.asList(s));
+            if (hashmap.containsKey(key)) { 
+                List<String> words = hashmap.get(key); 
+                words.add(s);
+    			hashmap.put(key, words);
+            }
+            else {
+            	List<String> list = new ArrayList<String>();
+            	list.add(s);
+            	hashmap.put(key,list);
+            }
 		}
 		int index= 0;
+		
 		for(String key :hashmap.keySet()) {
 			List<String> list = hashmap.get(key);
 			for(String t:list) {
