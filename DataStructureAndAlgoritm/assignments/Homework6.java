@@ -29,6 +29,7 @@ public class Homework6 {
 		// CHECK EVEN FOR EVERY ELEMENT
 		int number = Integer.parseInt(digits.substring(start_index, start_index + lenght));
 		if (number % 2 == 0) {// IF NUMBER IS EVEN ADD COUNT
+			System.out.println(number);
 			count++;
 		}
 		if (start_index + lenght == digits.length()) {
