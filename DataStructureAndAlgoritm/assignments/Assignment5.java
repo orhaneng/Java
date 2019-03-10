@@ -47,9 +47,9 @@ SPACE COMPLEXITY:O(1)
  */
 public class Assignment5 {
 
-	public static void main(String[] args){
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		filereader(4);
+		filereader(5);
 	}
 
 	public static String filereader(int n) {
@@ -60,12 +60,12 @@ public class Assignment5 {
 			int count = 0;
 			while (sc.hasNextLine()) {
 				String line = sc.nextLine();
+
+				if (count == n && !"%".equals(line)) {
+					System.out.println(line);
+				}
 				if ("%".equals(line)) {
 					count++;
-					continue;
-				}
-				if (count == n) {
-					System.out.println(line);
 				}
 			}
 		} catch (FileNotFoundException e) {
