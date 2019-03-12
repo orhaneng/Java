@@ -1,4 +1,5 @@
-/*
+/*NAME: OMER ORHAN   GID:16
+ * HOMEWORK6
  * Create a recursive function that takes a string of digits and counts the possible 
  * ways in which the string can be partition into a sequence of even numbers:
 input 10 ==> only one way to partition into even numbers 10
@@ -17,19 +18,18 @@ TIME COMPLEXITY:O(2 exponent n)
 MEMORY COMPLEXITY:O(2 exponent n)
  */
 public class Homework6 {
-
 	public static void main(String[] args) {
 		System.out.println(divideDigit("1234", 0, 1, 0));
 	}
-
 	public static int divideDigit(String digits, int start_index, int lenght, int count) {
 		if (lenght == digits.length()) {
-			return count;
+			return count+1;
 		}
 		// CHECK EVEN FOR EVERY ELEMENT
 		int number = Integer.parseInt(digits.substring(start_index, start_index + lenght));
+		System.out.println(number);
 		if (number % 2 == 0) {// IF NUMBER IS EVEN ADD COUNT
-			System.out.println(number);
+			//System.out.println(number);
 			count++;
 		}
 		if (start_index + lenght == digits.length()) {
