@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="assignments"/>
 	<classpathentry kind="src" path="QUESTIONS_BOOK"/>
 	<classpathentry kind="src" path="ArrayAndStrings"/>
+	<classpathentry kind="src" path="interviewQuestions"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,14 +1,33 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-/*
+/* NAME:OMER ORHAN GID:16
+ * HOMEWORK7
  * Create a program that creates and uses the valid word matrix described in class for 
  * the ValidWordSequence recursive problem. i.e. Give a string and a dictionary create 
  * a two dimensional boolean matrix where m[i,j] = true if substring(i through j) is 
  * valid word and false if not. Then use the best algorithm to employ that matrix to 
  * solve the problem that was shown to be O(n!) in its recursive form.
+ * 
+ * TIME COMPLEXITY:O(N)
+ * SPACE COMLEXITY:O(N)
+ * test case:
+ * String text = "theyaregreatbooks";
+ * Dictionary;
+ * 		dictionary.add("they");
+		dictionary.add("are");
+		dictionary.add("great");
+		dictionary.add("books");
+   OUTPUT
+   a few TRUE examples
+ * matrix[0][4]=true
+   matrix[4][7]=true
+   matrix[7][12]=true
+   a few FALSE examples
+   matrix[0][0]=false
+   matrix[0][1]=false
+   matrix[0][2]=false
+   matrix[0][3]=false
  */
+import java.util.ArrayList;
+
 public class Homework7 {
 
 	static String text = "theyaregreatbooks";
@@ -25,7 +44,6 @@ public class Homework7 {
 		System.out.println(ValidWordSequence(0, 0));
 		for (int i = 0; i < text.length(); i++) {
 			for (int j = 0; j < text.length(); j++) {
-				if (matrix[i][j] == true)
 					System.out.println("matrix[" + i + "][" + j + "]=" + matrix[i][j]);
 			}
 		}
