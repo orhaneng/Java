@@ -43,6 +43,7 @@ public class SortArrayByParity2 {
                         int temp= A[i];
                         A[i]=A[j];
                         A[j]=temp;
+                        break;
                     }
                 }
                 
@@ -53,6 +54,7 @@ public class SortArrayByParity2 {
                         int temp= A[i];
                         A[i]=A[j];
                         A[j]=temp;
+                        break;
                     }
                 }
                 
