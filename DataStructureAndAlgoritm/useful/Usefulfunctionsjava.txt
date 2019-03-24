@@ -1,0 +1,27 @@
+Useful functions java
+====ARRAYS==========================
+Arrays.sort(arr, Collections.reverseOrder()); 
+Arrays.sort(arr, new Sortbyroll()); //We can also sort an array according to user defined criteria. 
+Arrays.sort(months,
+            (String a, String b) -> a.length() - b.length());
+    Arrays.sort(toSort, 3, 7);//sort part of array
+for (int item: a1) {
+Dynamic array => ArrayList
+Integer[] a = {0, 1, 2, 3, 4};        // 2. cast an array to a vector
+  v1 = new ArrayList<>(Arrays.asList(a));
+List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1
+Collections.sort(v1);
+ v1.remove(v1.size() - 1);
+
+List<List<Integer>> result = new ArrayList<List<Integer>>(); //pay attention how to create
+
+===================================
+=======STRING============
+Integer.parseInt() //string to numeric
+Character.getNumericValue( //char to numeric
+a.charAt( // get spec index from string
+Stringbuilder.reverse()
+String.valueOf( //char to string
+==========================
+
+Map<String,String> table = new HashMap<String, String>();
