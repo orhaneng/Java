@@ -22,6 +22,31 @@ Character.getNumericValue( //char to numeric
 a.charAt( // get spec index from string
 Stringbuilder.reverse()
 String.valueOf( //char to string
-==========================
+char[] gfg = s.toCharArray(); 
+result.toString().trim()
+for (int j = 0; j < 26; j++)
+{
+    if((array[i]==(char) ('A' + j))||(array[i]==(char) ('a' + j))){
+Character.isLetter(
+String.copyValueOf( //chararray to string
+ string.indexOf('a') //char in string
+ for (char c : T.toCharArray()) { ++count[c - 'a']; }  // count each char in T.(Q:customsortstring)
+for (char c = 'a'; c <= 'z'; ++c) {
+    while (count[c - 'a']-- > 0) { sb.append(c); }   // group chars in T but not in S.
+}
 
+learn difference size and length???
+https://way2java.com/arrays/java-made-clear-difference-between-length-and-length/
+==========================
+================MAP============================================
 Map<String,String> table = new HashMap<String, String>();
+Map<String, List<String>> map = new HashMap<String, List<String>>();
+map.put(String.copyValueOf(arr), list);
+map.containsKey(String.copyValueOf(arr))
+for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+	String key = entry.getKey();
+	List<String> value = entry.getValue();
+		return new ArrayList<List<String>>(map.values());
+
+
+
