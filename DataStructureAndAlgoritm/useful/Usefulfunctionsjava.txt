@@ -37,6 +37,8 @@ for (char c = 'a'; c <= 'z'; ++c) {
 
 learn difference size and length???
 https://way2java.com/arrays/java-made-clear-difference-between-length-and-length/
+Str.lastIndexOf('g')
+Arrays.toString(arr)   //array string to single string
 ==========================
 ================MAP============================================
 Map<String,String> table = new HashMap<String, String>();
