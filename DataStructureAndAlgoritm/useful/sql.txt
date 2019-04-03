@@ -1,0 +1,39 @@
+select customers.name as 'Customers'
+from customers
+where customers.id not in
+(
+    select customerid from orders
+);
+select name customers from customers c left join orders o on c.id=o.customerid where o.customerid is null
+select class from courses group by class HAVING COUNT(distinct student) >= 5;
+
+SELECT wt1.Id 
+FROM Weather wt1, Weather wt2
+WHERE wt1.Temperature > wt2.Temperature AND 
+      TO_DAYS(wt1.DATE)-TO_DAYS(wt2.DATE)=1;
+    
+      
+datediff(
+
+ROWNUM
+select salary as secondhighestsalary from (select salary, ROWNUM AS RN  from employee order
+ by salary asc) where RN = 2
+ 
+ MAX
+ SELECT max(Salary) secondhighestsalary
+FROM Employee
+WHERE Salary < (SELECT max(Salary) FROM Employee)
+
+UPDATE dbo.TestStudents  
+SET LASTNAME = 
+( CASE  
+WHEN (LASTNAME = 'AAA') THEN 'BBB' 
+WHEN (LASTNAME = 'CCC') THEN 'DDD' 
+WHEN (LASTNAME = 'EEE') THEN 'FFF' 
+ELSE  (LASTNAME)
+END )
+
+SELECT * FROM Customers LIMIT 3; //first tree
+
+distinct
+select distinct salary from Employee order by salary desc

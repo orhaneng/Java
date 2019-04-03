@@ -14,14 +14,15 @@ Collections.sort(v1);
  v1.remove(v1.size() - 1);
 
 List<List<Integer>> result = new ArrayList<List<Integer>>(); //pay attention how to create
-
+Arrays.copyOf( //It copies the specified array, truncating or padding with false (if necessary) so the copy has the specified length.
 ===================================
 =======STRING============
 Integer.parseInt() //string to numeric
 Character.getNumericValue( //char to numeric
 a.charAt( // get spec index from string
 Stringbuilder.reverse()
-String.valueOf( //char to string
+String.valueOf( //char to string  //int to string
+Character.getNumericValue(item) char to int 
 char[] gfg = s.toCharArray(); 
 result.toString().trim()
 for (int j = 0; j < 26; j++)
@@ -44,11 +45,43 @@ Arrays.toString(arr)   //array string to single string
 Map<String,String> table = new HashMap<String, String>();
 Map<String, List<String>> map = new HashMap<String, List<String>>();
 map.put(String.copyValueOf(arr), list);
+Map<Integer, Integer> hashmap = new HashMap<>();
+hashmap.putIfAbsent(0, 0);
+hashmap.put(1, 1);
+hashmap.get(1)
+hashmap.remove(2);
+hashmap.containsKey(2)
+hashmap.size()
+for (Map.Entry<Integer, Integer> entry : hashmap.entrySet()) {
+	System.out.print("(" + entry.getKey() + "," + entry.getValue() + ") ");
+hashmap.clear();
+hashmap.isEmpty()
+
+
 map.containsKey(String.copyValueOf(arr))
 for (Map.Entry<String, List<String>> entry : map.entrySet()) {
 	String key = entry.getKey();
 	List<String> value = entry.getValue();
 		return new ArrayList<List<String>>(map.values());
+		
+HashSet<Integer> set = new HashSet<Integer>();
+hashSet.add(3);
+hashSet.remove(2);
+hashSet.contains(2)
+for (Integer i : hashSet) {
+hashSet.clear();
+hashSet.isEmpty()
+hashSet.size()
+The retainAll() method of java.util.concurrent.CopyOnWriteArraySet class is used to retain from this set all of its elements that are contained in the specified collection.
+
+
+======BIT MANUPULATION=====
+we use bitwise XOR to solve this problem :
+first , we have to know the bitwise XOR in java
+0 ^ N = N
+N ^ N = 0
+for(int i:nums) res^=i;
+
 
 
 
