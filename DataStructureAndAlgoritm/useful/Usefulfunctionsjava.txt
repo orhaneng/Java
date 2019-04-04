@@ -38,8 +38,11 @@ for (char c = 'a'; c <= 'z'; ++c) {
 
 learn difference size and length???
 https://way2java.com/arrays/java-made-clear-difference-between-length-and-length/
-Str.lastIndexOf('g')
+Str.lastIndexOf('g')	
 Arrays.toString(arr)   //array string to single string
+Integer.MAX_VALUE
+Integer.MIN_VALUE
+
 ==========================
 ================MAP============================================
 Map<String,String> table = new HashMap<String, String>();
@@ -51,7 +54,9 @@ hashmap.put(1, 1);
 hashmap.get(1)
 hashmap.remove(2);
 hashmap.containsKey(2)
+hashmap.containsValue
 hashmap.size()
+map.getOrDefault(n1, 0)
 for (Map.Entry<Integer, Integer> entry : hashmap.entrySet()) {
 	System.out.print("(" + entry.getKey() + "," + entry.getValue() + ") ");
 hashmap.clear();

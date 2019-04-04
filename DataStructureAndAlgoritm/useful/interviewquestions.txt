@@ -7,3 +7,107 @@ nextbee03.29.2019
 mendei.ai
 -spring framework api
 -sql
+mendel.ai 04.04
+1-Write a function 	that prints out ASCII-art in the stage of the capital letter L,made up of 
+copies of the capital letter L. Parameter N is an integer (between 1 and 100) and represents
+the expected size of the ASCII-art (the output should comprise N rows, the last of which 
+should comprise N letters L.
+
+For example, here is the output for N=4:
+L
+L
+L
+LLLL
+
+The function shouldnt return any value.
+you can print a string to the output (without or with the end-of-line character) as follows;
+System.out.println();
+System.out.print();
+
+2-An automatic judgement system checks a solution for the task on multiple test cases. The
+ outcome of a test case is binary; either the solution succeeds of fails. But not all test 
+ cases are equally important. Each test cases is assigned to a group, and every test cases 
+ group is worth the same number of points.
+ 
+ You have received a raw report with the results of the automatic testing. The report 
+ consist of two tables, test_groups and test_cases, with the following structure;
+ 
+ create table test_groups(
+ name varchar(40) not null,
+ test_value integer not null,
+ unique(name)
+);
+
+
+ create table test_cases(
+ id integer not null,
+ group_name varchar(40) not null,
+ status varchar(5) not null,
+ unique(id)
+);
+
+
+
+each row of the table test_groups contains information about a single group of tests;
+unique name(name) and the value of each test in the group (test_value). Each row of the table 
+test_cases contains information about a single test case: unique id(id), the name of the group
+to which it belongs (group_name) and status (status). Status contains either one of two possible
+words:ok, error
+
+write an sql query that summarizes each group of tests. The table of results should contain
+four columns: name (name of the group), all_test_cases(number of test in task)
+
+examples 
+1.given	
+test groups;
+name                       test value
+performance                15
+corner cases               10
+numerical stability        20
+memory usage               10
+
+test_cases
+id    group_name             status
+13    memory usage           OK
+14    numerical stability    OK
+15    memory usage           ERROR
+16    numerical stability    OK
+17    numerical stability    OK
+18    performance            ERROR
+19    performance            ERROR
+20    memory usage           OK
+21    numerical stability    OK
+
+YOU SHOULD RETURN
+name                   all_test_cases  passed_test_cases  total_value
+numerical stability    4               4                   80  
+memory usage           3               2                   20  
+corner cases           0               0                   0  
+performance            2               0                   0  
+
+assume that:every group_name in the table test_cases also appears as name in the table
+test_groups
+
+
+3- you are given a spring mvc application and your task is to build new RESTFul web service.
+you should implement two variants of reading the /healthcheck resource using JSON as the response 
+data format:
+method to read simple healthcheck
+a request to GET /healthcheck?format=short should return a simple message:
+{"status":"OK"}
+Method to read detailed healthcheck
+a request to get /healthcheck?format=full should return the application status and current 
+time(formatted as an ISO 8601 string);
+
+{"currenttime":"2018-06-06T21:59:36Z","application":OK}
+other requirements and hints
+1.Performance is not assesed;focus on correctness and code quality
+2. if parameters values do not match the specified possible values, you should return HTTP status 
+code 400("bad request")
+3. responses should have content-type header with appropriate value (application/json)
+4.if you need to create multiple classes, you can use nested classes or define multiple 
+classes in one source file. 
+5.you can use the following libraries and their dependencies
+ spring web mvc (v. 5.0.7 release)
+ fasterXML jackson, jackson datatype JSR310(v. 2.9.6)	
+ 
