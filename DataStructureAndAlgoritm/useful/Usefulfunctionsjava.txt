@@ -80,6 +80,17 @@ hashSet.size()
 The retainAll() method of java.util.concurrent.CopyOnWriteArraySet class is used to retain from this set all of its elements that are contained in the specified collection.
 
 
+ArrayList<String> cars = new ArrayList<String>(); // Create an ArrayList object
+cars.add("BMW");
+cars.get(0);
+cars.set(0, "Opel");
+cars.remove(0);
+cars.clear();
+cars.size();
+
+    java.util.Random rand = new java.util.Random();
+
+
 ======BIT MANUPULATION=====
 we use bitwise XOR to solve this problem :
 first , we have to know the bitwise XOR in java

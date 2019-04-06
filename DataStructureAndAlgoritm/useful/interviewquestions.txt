@@ -1,9 +1,11 @@
 gridx 03.21.2019
 -what is maps
 -what is secure maps in java
+==========================================================
 nextbee03.29.2019
 -web page security
 -explain interfaces and abstract class
+==========================================================
 mendei.ai
 -spring framework api
 -sql
@@ -87,6 +89,19 @@ performance            2               0                   0
 
 assume that:every group_name in the table test_cases also appears as name in the table
 test_groups
+,,,,,,
+SELECT 
+   t1.group_name name, COALESCE(count(t1.status),0)
+FROM test_cases AS t1
+LEFT JOIN test_cases AS t2 ON t1.id = t2.id
+GROUP BY t1.group_name;
+
+
+SELECT 
+   t2.group_name, COALESCE(count(*),0) as all_test_cases
+FROM test_cases t1 left join  t2 on t1.id=t2.id 
+GROUP BY t2.group_name;
+,,,,,
 
 
 3- you are given a spring mvc application and your task is to build new RESTFul web service.
