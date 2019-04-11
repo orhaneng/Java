@@ -100,4 +100,9 @@ for(int i:nums) res^=i;
 
 
 
-
+==============QUEUE======================
+        Queue<Integer> q = new LinkedList();
+q.peek() // GET THE FIRST ELEMENT
+        q.offer(5); 
+ q.poll(); POP AN ELEMENT
+q.size() get the size of the element
