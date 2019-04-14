@@ -26,6 +26,12 @@ class PowerBall extends PowerBallBase {
 	public void alg() {
 		boolean powerball = false;
 		int count = 0;
+		msg=null;
+		if(ticketNumber.length!=6) {
+			cash=0;
+			msg="Ticket number is not valid";
+			return;
+		}
 		int[] winningNumberSorted= new int[5];
 		for(int i=0;i<winningNumber.length-1;i++) {
 			winningNumberSorted[i]=winningNumber[i];

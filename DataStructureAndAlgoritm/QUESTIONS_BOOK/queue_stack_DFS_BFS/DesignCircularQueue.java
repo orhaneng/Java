@@ -1,4 +1,4 @@
-package queue_stack;
+package queue_stack_DFS_BFS;
 
 public class DesignCircularQueue {
 

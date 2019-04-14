@@ -3,7 +3,7 @@
  
 Given a stream of integers and a window size, calculate the moving average of all integers in the sliding window.
  */
-package queue_stack;
+package queue_stack_DFS_BFS;
 
 import java.util.LinkedList;
 import java.util.Queue;

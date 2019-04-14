@@ -42,7 +42,8 @@ Str.lastIndexOf('g')
 Arrays.toString(arr)   //array string to single string
 Integer.MAX_VALUE
 Integer.MIN_VALUE
-
+List<List<Integer>> list = new ArrayList<List<Integer>>();
+Character.isDigit()
 ==========================
 ================MAP============================================
 Map<String,String> table = new HashMap<String, String>();
@@ -109,3 +110,10 @@ q.size() get the size of the element
         LinkedList<Integer> queue= new LinkedList<Integer>();
 queue.offer(code); //push
 queue.poll();
+===========STACK=========================
+Stack<Integer> s = new Stack<>();
+s.push(5);
+s.empty()
+s.pop();
+s.peek()//Get the top element
+s.size()
