@@ -84,6 +84,10 @@ public class sifirbirMatrix {
 					int[] newLoc = { location[0] + list[j][0], location[1] + list[j][1] };
 					if (newLoc[0] >= 0 && newLoc[0] < matrix.length && newLoc[1] >= 0 && newLoc[1] < matrix[0].length
 							&& matrix[newLoc[0]][newLoc[1]] == 0) {
+					}
+					
+					if (newLoc[0] >= 0 && newLoc[0] < matrix.length && newLoc[1] >= 0 && newLoc[1] < matrix[0].length
+							&& matrix[newLoc[0]][newLoc[1]] == 0) {
 						matrix[row][col] = level;
 						return;
 					} else if (newLoc[0] >= 0 && newLoc[0] < matrix.length && newLoc[1] >= 0

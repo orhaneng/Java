@@ -1,3 +1,4 @@
+package homework1;
 /**
  * File Name: PowerBallBase.java 
  * Sum of N base class
