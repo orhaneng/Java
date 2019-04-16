@@ -45,7 +45,9 @@ class duplicateN extends duplicateNBase{
 	 */
 	private int alg_nsquare_time_constant_space() {
 		int num = 0;
-		
+		for(int i=0;i<a.length;i++) {
+			
+		}
 	  return num;
 	}
 	
