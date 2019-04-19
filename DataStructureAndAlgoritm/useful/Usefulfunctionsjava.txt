@@ -6,7 +6,7 @@ Arrays.sort(months,
             (String a, String b) -> a.length() - b.length());
     Arrays.sort(toSort, 3, 7);//sort part of array
 for (int item: a1) {
-Dynamic array => ArrayList
+ynamic array => ArrayList
 Integer[] a = {0, 1, 2, 3, 4};        // 2. cast an array to a vector
   v1 = new ArrayList<>(Arrays.asList(a));
 List<Integer> v3 = new ArrayList<>(v1);     // make an actual copy of v1
@@ -15,6 +15,7 @@ Collections.sort(v1);
 
 List<List<Integer>> result = new ArrayList<List<Integer>>(); //pay attention how to create
 Arrays.copyOf( //It copies the specified array, truncating or padding with false (if necessary) so the copy has the specified length.
+arr.subList(
 ===================================
 =======STRING============
 Integer.parseInt() //string to numeric
@@ -117,3 +118,6 @@ s.empty()
 s.pop();
 s.peek()//Get the top element
 s.size()
+
+===BINARY SEARCH===================
+Collections.binarySearch(arr,x);
