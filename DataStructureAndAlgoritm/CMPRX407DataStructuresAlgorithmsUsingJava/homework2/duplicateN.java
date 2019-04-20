@@ -79,29 +79,21 @@ class duplicateN extends duplicateNBase {
 	 * Time complexity O(n) Space Complexity O(1)
 	 */
 	private int alg_ntime_constant_space() {
-		int count = 0;
+		int num = 0;
+		int[] temparr = new int[a.length];
 		for (int i = 0; i < a.length; i++) {
-			if (a[i] == 0) {
-				a[i] = a.length;
-			}
-		}
-
-		for (int i = 0; i < a.length; i++) {
-			// check if element is negative, if yes the we have found the duplicate
-			if (a[Math.abs(Math.abs(a[i]) == a.length ? 0 : a[i])] < 0) {
+			if (temparr[a[i]] >= 1) {
+				temparr[a[i]] = 2;
 			} else {
-				a[Math.abs(Math.abs(a[i]) == a.length ? 0 : a[i])] = a[Math.abs(Math.abs(a[i]) == a.length ? 0 : a[i])] * -1;
-				count++;
+				temparr[a[i]] = 1;
 			}
 		}
 
-		for (int i = 0; i < a.length; i++) {
-			if(Math.abs(a[i])==a.length) {
-				a[i]=0;
-			}
-			a[i] = Math.abs(a[i]);
+		for (int i = 0; i < temparr.length; i++) {
+			if (temparr[i] == 2)
+				num++;
 		}
-		return count;
+		return num;
 	}
 
 	public static void main(String[] args) {
