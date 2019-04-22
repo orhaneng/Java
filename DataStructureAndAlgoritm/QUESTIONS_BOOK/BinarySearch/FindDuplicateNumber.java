@@ -32,19 +32,48 @@ public class FindDuplicateNumber {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] nums = { 1, 0, 0, 0 };
-		// int[] nums= {1,1,1,2,2};
+		//int[] nums = { 1, 0, 0, 0 };
+		int[] nums= {2,2,3,3,3,3,3,3,3,4,5,};
 		// printRepeating(nums, nums.length);
 		System.out.println(alg_ntime_constant_space(nums));
 
 	}
 
 	private static int alg_ntime_constant_space(int[] a) {
-		int result = 0;
-		for (int i = 0; i < a.length; i++) {
-			result ^= a[i];
+		int n = a.length;
+		for (int i = 0; i < n; i++) {
+			int hi = a[i];
+			int h = hi % n;
+			int x = a[h] + n;
+			if (x < 3 * n) {
+				a[h] = x;
+			}
 		}
-		return (result > 0 ? result : -1);
+		int ndup = 0;
+		boolean first = true;
+		for (int i = 0; i < n; i++) {
+			int t = a[i];
+			if (t >= 2 * n) {
+				++ndup;
+				if (true) {
+					if (first) {
+						System.out.println("duplicate");
+						first = false;
+					} else {
+						System.out.println(",");
+					}
+					System.out.println(t % n);
+				}
+			}
+			a[i] = t % n;
+		}
+		if (true && !first) {
+			System.out.println("}");
+		}
+		if (true) {
+			System.out.println("numduplicates count;" + ndup);
+		}
+		return ndup;
 	}
 
 	static int printRepeating(int input[], int size) {

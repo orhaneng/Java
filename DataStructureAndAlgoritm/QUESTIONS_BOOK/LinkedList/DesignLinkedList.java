@@ -45,7 +45,7 @@ public class DesignLinkedList {
 		System.out.println("result"+linkedList.get(2)); 
 		System.out.println("result"+linkedList.get(1));
 
-
+ 
 	}
 	
 	static class MyLinkedList {

@@ -40,7 +40,7 @@ public class AllPossibleFullBinaryTrees {
 		// TODO Auto-generated method stub
 		System.out.println(allPossibleFBT(7));
 	}
-	
+	 
 	public void print(Map<Integer, List<TreeNode>> memo) {
 		for (Map.Entry<Integer, List<TreeNode>> entry : memo.entrySet()) {
 			List<TreeNode> node = entry.getValue();
