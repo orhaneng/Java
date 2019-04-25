@@ -1,35 +1,81 @@
 package homework3.graph;
 
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 /**
- * File Name: GraphDot.java 
- * Writes graph as a dot file
+ * File Name: GraphDot.java Writes graph as a dot file
  * 
  * @author Jagadeesh Vasudevamurthy
  * @year 2018
  */
 
 /*
- * To compile you require: IntUtil.java RandomInt.java Graph.java GraphTest.javs GraphDot.java
+ * To compile you require: IntUtil.java RandomInt.java Graph.java GraphTest.javs
+ * GraphDot.java
  */
 
-class GraphDot{
-	private Graph g ;
+class GraphDot {
+	private Graph g;
 	private String fname;
-	//You can have any number of private variables
-	private String[][] e ;
+	// You can have any number of private variables
+	private String[][] e;
 
 	GraphDot(Graph g, String s) {
-		this.g = g ;
-		this.fname = s ;
-		writeDot() ;
+		this.g = g;
+		this.fname = s;
+		writeDot();
 	}
 
 	private void writeDot() {
-		//WRITE CODE HERE
+
+		System.out.println(g.getnumV());
+		StringBuilder text = new StringBuilder();
+		String[] namelist = fname.split("/");
+		String name = (namelist != null ? namelist[namelist.length - 1] : "").replace(".dot", "");
+
+		System.out.println(fname);
+		text.append("digraph " + name + " {");
+		text.append("\n");
+		for (int i = 0; i < g.getnumV(); i++) {
+			String n = g.getRealName(i);
+			for (int j = 0; j < g.numFanout(i); j++) {
+				int fo = g.getNodeFanout(i, j);
+				double cost = g.getNodeFanoutEdgeWeight(i, j);
+				String nf = g.getRealName(fo);
+				text.append(n + " -> " + nf);
+				if (cost != 0) {
+					text.append(" [ label=" + cost + "]");
+				}
+				text.append("\n");
+			}
+		}
+		text.append("}");
+		writeDotFile(fname, text);
+		g.dump(fname);
+	}
+
+	public static void writeDotFile(String path, StringBuilder text) {
+
+		File file = new File(path);
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(file));
+			writer.write(text.toString());
+			System.out.println("file is created.");
+		} catch (IOException e) {
+
+		} finally {
+			if (writer != null)
+				try {
+					writer.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
 	}
 
 	public static void main(String[] args) {

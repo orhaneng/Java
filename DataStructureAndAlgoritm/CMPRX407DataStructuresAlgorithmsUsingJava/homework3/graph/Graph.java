@@ -24,7 +24,7 @@ class Graph {
 	 */
 	private class node {
 		private int name ;
-		ArrayList<edge> fanins ;
+		ArrayList<edge> fanins ;	
 		ArrayList<edge> fanouts ;
 		node(int name) {
 			this.name = name ;
