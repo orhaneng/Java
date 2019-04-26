@@ -31,12 +31,9 @@ class GraphDot {
 
 	private void writeDot() {
 
-		System.out.println(g.getnumV());
 		StringBuilder text = new StringBuilder();
 		String[] namelist = fname.split("/");
 		String name = (namelist != null ? namelist[namelist.length - 1] : "").replace(".dot", "");
-
-		System.out.println(fname);
 		text.append("digraph " + name + " {");
 		text.append("\n");
 		for (int i = 0; i < g.getnumV(); i++) {
@@ -54,7 +51,6 @@ class GraphDot {
 		}
 		text.append("}");
 		writeDotFile(fname, text);
-		g.dump(fname);
 	}
 
 	public static void writeDotFile(String path, StringBuilder text) {
@@ -64,7 +60,6 @@ class GraphDot {
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
 			writer.write(text.toString());
-			System.out.println("file is created.");
 		} catch (IOException e) {
 
 		} finally {
