@@ -8,12 +8,17 @@ public class BinaryTreePreorderTraversal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		TreeNode root = new TreeNode(1);
-		//root.left = new TreeNode(2);
-		root.right = new TreeNode(2);
-		root.right.left = new TreeNode(3);
-		//root.left.right = new TreeNode(5);
-		System.out.println(preorderTraversal(root));
+		root.left = new TreeNode(2);
+		root.right = new TreeNode(3);
+		root.left.left = new TreeNode(4);
+		root.left.right = new TreeNode(5);
+		tryna(root);
+		root=root;
 
+	}
+	
+	public static void tryna(TreeNode root) {
+		root.left =root.left.left;
 	}
 
 	public static class TreeNode {

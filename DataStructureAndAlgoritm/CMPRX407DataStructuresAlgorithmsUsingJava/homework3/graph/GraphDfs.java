@@ -34,6 +34,7 @@ class GraphDfs{
 		this.start = start;
 		this.cycle = cycle ;
 		//You can have any number of private variables and classes
+		//you have to create an array
 		dfsAlg() ;
 	}
 

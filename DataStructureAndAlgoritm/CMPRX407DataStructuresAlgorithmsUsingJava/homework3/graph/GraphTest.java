@@ -85,10 +85,10 @@ class GraphTest{
 
 	private void testDFS() {
 		{
-			String [] n = {"2","3","7", "8", "1", "4","9"} ; 
-			int [] t = {2,2,4,1,1,2,2};
-			String [] s = {"1","0", "0", "1", "1", "A","A"} ;
-			int [] c = {0, 1, 0, 1, 0, 0,1};
+			String [] n = {"2","3","7", "8", "1", "4","9"} ; // directed , undireocted
+			int [] t = {2,2,4,1,1,2,2};//directed or undirected
+			String [] s = {"1","0", "0", "1", "1", "A","A"} ; // starting city
+			int [] c = {0, 1, 0, 1, 0, 0,1}; // loop or no loop
 
 			int nl = n.length ;
 			int tl = t.length ;
@@ -113,7 +113,11 @@ class GraphTest{
 				int[] work = {0} ;
 				int[] size = {0} ;
 				String name1 = name + ".txt" ;
-				g.dfs(name1,sc,cycle,work,size,dfsorder) ;
+				g.dfs(name1,sc,cycle,work,size,dfsorder) ;//name of the graph
+				//sc- starting city/ we should return cycle or no,  dsforder array, size array size.
+				//used array because pass by value
+				//work = how much steps we did in forloop work++
+				
 				if (cycle[0] == false) {
 					u.myassert(c[i] == 0) ;
 				}
@@ -127,8 +131,8 @@ class GraphTest{
 	private void testBFS() {
 		{
 			String [] n = {"1","2","3","4","5","6","7","50"} ;
-			int [] t = {1,2,2,2,1,1,4,1};
-			String [] s = {"1","1","0","A","0","1","0","0"} ;
+			int [] t = {1,2,2,2,1,1,4,1};  // directed , undireocted
+			String [] s = {"1","1","0","A","0","1","0","0"} ;  //starting city
 
 			int nl = n.length ;
 			int tl = t.length ;
