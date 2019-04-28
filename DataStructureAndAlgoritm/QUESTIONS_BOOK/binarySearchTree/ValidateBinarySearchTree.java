@@ -37,7 +37,8 @@ Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
  */
 package binarySearchTree;
 
-import binarySearchTree.UnivaluedBinaryTree.TreeNode;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class ValidateBinarySearchTree {
 
@@ -48,8 +49,17 @@ public class ValidateBinarySearchTree {
 		root.right = new TreeNode(15);
 		root.right.left = new TreeNode(6);
 		root.right.right = new TreeNode(20);
-		System.out.println(isValidBST(root));
-
+		//System.out.println(isValidBST(root));
+		
+		Deque<String> queue= new LinkedList<String>();
+		queue.offer("1");
+		queue.offer("X");
+		queue.offer("2");
+		queue.offer("3");
+		queue.offer("4");
+		
+		TreeNode res = buildTree(queue);
+		res= res;
 	}
 
     public static boolean isValidBST(TreeNode root) {
@@ -70,6 +80,17 @@ public class ValidateBinarySearchTree {
 		TreeNode(int x) {
 			val = x;
 		}
+	}
+	
+	public  static TreeNode buildTree(Deque<String> queue) {
+		if(queue.isEmpty()) return null;
+		String val = queue.remove();
+		if(val.equals("X")) return null;
+		
+		TreeNode node = new TreeNode(Integer.parseInt(val));
+		node.left= buildTree(queue);
+		node.right=buildTree(queue);
+		return node;
 	}
 
 }
