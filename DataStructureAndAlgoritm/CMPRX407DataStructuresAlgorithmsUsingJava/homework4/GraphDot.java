@@ -31,6 +31,7 @@ class GraphDot {
 
 	private void writeDot() {
 
+		/*
 		StringBuilder text = new StringBuilder();
 		String[] namelist = fname.split("/");
 		String name = (namelist != null ? namelist[namelist.length - 1] : "").replace(".dot", "");
@@ -51,6 +52,43 @@ class GraphDot {
 		}
 		text.append("}");
 		writeDotFile(fname, text);
+		*/
+		try {
+			FileWriter o = new FileWriter(fname);
+			GraphTest.GraphType t= g.getType();
+			o.write("## jagadeesh");
+			o.write("dot - tpdf"+fname+"-o"+fname+".pdf\n");
+			o.write("digraph g{\n");
+			if(t==GraphTest.GraphType.UNDIRECTED||t==GraphTest.GraphType.WEIGHTED_UNDIRECTED) {
+				o.write("edge [dir=none, color=red]|\n");
+			}else {
+				o.write("edge [color=red]\n");
+			}
+			
+			int n=g.getnumV();
+			for (int i = 0; i < g.getnumV(); i++) {
+				String p1=g.getNodeRealName(i);
+				int nf=g.numFanout(i);
+				for (int j = 0; j < nf; j++) {
+					int k =g.getNodeFanout(i, j);
+					String p2=g.getNodeRealName(k);
+					double w=g.getNodeFanoutEdgeWeight(i, j);
+					if((t==GraphTest.GraphType.WEIGHTED_UNDIRECTED)||(t==GraphTest.GraphType.WEIGHTED_DIRECTED)) {
+						if((t==GraphTest.GraphType.WEIGHTED_DIRECTED)||(i<k)){
+							o.write("  "+p1+" -> " +p2+" [label = "+w+"]\n");
+						}
+					}else {
+						if((t==GraphTest.GraphType.DIRECTED)||(i<k)) {
+							o.write("  "+p1+" -> "+p2+"\n");
+						}
+					}
+				}
+				
+			}
+
+		}catch(Exception ex){
+			
+		}
 	}
 
 	public static void writeDotFile(String path, StringBuilder text) {

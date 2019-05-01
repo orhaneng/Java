@@ -390,9 +390,10 @@ class GraphTest{
 	}
 
 	private void testBed() {
-		testGraphRepresentation() ;
-		/*
+		//testGraphRepresentation() ;
+		
 		testDFS();
+		/*
 		testBFS() ;
 		testToplogicalSort() ;
 		testDagLongestPath() ;
