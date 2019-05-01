@@ -1,5 +1,6 @@
 package homework4;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -105,6 +106,21 @@ class GraphDfs {
 		
 		//0-1-6-4-3-5-2-
 		//0-2-5-6-1-4-2
+	}
+	
+	private int controlUnvisitedV(int k, String[] colorArr) {
+		int nf = g.numFanout(k);
+		for (int j = 0; j < nf; j++) {
+			int index = g.getNodeFanout(k, j);
+				int fin = g.numFanin(index);
+				for (int i = 0; i < fin; i++) {
+					if(colorArr[g.getNodeFanin(index, i)]==Colors.BLUE.toString()) {
+						return g.getNodeFanin(index, i);
+					}
+				}
+		}
+		return -1;
+		
 	}
 
 	public static void main(String[] args) {
