@@ -45,7 +45,7 @@ class GraphDfs {
 	}
 
 	private void dfsAlg() {
-		System.out.println(t);
+		//System.out.println(t);
 		String[] colorArr = new String[g.getnumV()];
 		for (int i = 0; i < colorArr.length; i++) {
 			colorArr[i] = Colors.GREEN.toString();
@@ -56,11 +56,11 @@ class GraphDfs {
 
 		reverseArray(dfsorder);
 
-		for (int i = 0; i < dfsorder.length; i++) {
-			System.out.print(g.getNodeRealName(dfsorder[i]) + "-");
-		}
-		System.out.println();
-		System.out.println("workdone" + work[0]);
+		//for (int i = 0; i < dfsorder.length; i++) {
+		//	System.out.print(g.getNodeRealName(dfsorder[i]) + "-");
+		//}
+		//System.out.println();
+		//System.out.println("workdone" + work[0]);
 
 	}
 
@@ -83,10 +83,6 @@ class GraphDfs {
 			for (int j = 0; j < nf; j++) {
 				int k = g.getNodeFanout(nodeIndex, j);
 				String name = g.getNodeRealName(k);
-				// if (( g.getType() == GraphTest.GraphType.WEIGHTED_DIRECTED
-				// || g.getType() == GraphTest.GraphType.WEIGHTED_UNDIRECTED)
-				// && !controlUnvisitedV(k, colorArr))
-				// continue;
 				work[0] = work[0] + 1;
 				helper(colorArr, k);
 				work[0] = work[0] + 1;
@@ -100,23 +96,20 @@ class GraphDfs {
 			colorArr[nodeIndex] = Colors.RED.toString();
 		} else if ((g.getType() == GraphTest.GraphType.UNDIRECTED
 				|| g.getType() == GraphTest.GraphType.WEIGHTED_UNDIRECTED)) {
-			if(g.getnumE()/2>=g.getnumV()) {
+			if (g.getnumE() / 2 >= g.getnumV()) {
 				cycle[0] = true;
 			}
-			
+
 		} else if (colorArr[nodeIndex] == Colors.BLUE.toString() && (g.getType() == GraphTest.GraphType.DIRECTED
 				|| g.getType() == GraphTest.GraphType.WEIGHTED_DIRECTED)) {
 
 			cycle[0] = true;
-			System.out.println("cycle");
+			//System.out.println("cycle");
 			work[0] = work[0] - 1;
 			return;
 		} else if (colorArr[nodeIndex] == Colors.RED.toString()) {
 
 		}
-
-		// 0-1-6-4-3-5-2-
-		// 0-2-5-6-1-4-2
 	}
 
 	private boolean controlUnvisitedV(int k, String[] colorArr) {

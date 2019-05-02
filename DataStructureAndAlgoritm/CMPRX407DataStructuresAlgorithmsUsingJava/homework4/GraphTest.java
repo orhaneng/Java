@@ -108,6 +108,7 @@ class GraphTest{
 				g.writeDot(outputFileBase + name + ".dot") ;
 				String sc = s[i] ; //Starting city
 				boolean[] cycle = {false} ;
+				//dfsorder cannot be bigger than numV
 				int [] dfsorder = new int[g.getnumV()] ;
 				int[] work = {0} ;
 				int[] size = {0} ;
