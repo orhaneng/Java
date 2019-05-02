@@ -89,7 +89,7 @@ class GraphTest{
 			int [] t = {2,2,4,1,1,2,2};//directed or undirected
 			String [] s = {"1","0", "0", "1", "1", "A","A"} ; // starting city
 			int [] c = {0, 1, 0, 1, 0, 0,1}; // loop or no loop
-
+		
 			int nl = n.length ;
 			int tl = t.length ;
 			int sl = s.length ;
@@ -108,7 +108,6 @@ class GraphTest{
 				g.writeDot(outputFileBase + name + ".dot") ;
 				String sc = s[i] ; //Starting city
 				boolean[] cycle = {false} ;
-				//dfsorder cannot be bigger than numV
 				int [] dfsorder = new int[g.getnumV()] ;
 				int[] work = {0} ;
 				int[] size = {0} ;

@@ -32,62 +32,55 @@ class GraphDot {
 	private void writeDot() {
 
 		/*
-		StringBuilder text = new StringBuilder();
-		String[] namelist = fname.split("/");
-		String name = (namelist != null ? namelist[namelist.length - 1] : "").replace(".dot", "");
-		text.append("digraph " + name + " {");
-		text.append("\n");
-		for (int i = 0; i < g.getnumV(); i++) {
-			String n = g.getRealName(i);
-			for (int j = 0; j < g.numFanout(i); j++) {
-				int fo = g.getNodeFanout(i, j);
-				double cost = g.getNodeFanoutEdgeWeight(i, j);
-				String nf = g.getRealName(fo);
-				text.append(n + " -> " + nf);
-				if (cost != 0) {
-					text.append(" [ label=" + cost + "]");
-				}
-				text.append("\n");
-			}
-		}
-		text.append("}");
-		writeDotFile(fname, text);
-		*/
+		 * StringBuilder text = new StringBuilder(); String[] namelist =
+		 * fname.split("/"); String name = (namelist != null ? namelist[namelist.length
+		 * - 1] : "").replace(".dot", ""); text.append("digraph " + name + " {");
+		 * text.append("\n"); for (int i = 0; i < g.getnumV(); i++) { String n =
+		 * g.getRealName(i); for (int j = 0; j < g.numFanout(i); j++) { int fo =
+		 * g.getNodeFanout(i, j); double cost = g.getNodeFanoutEdgeWeight(i, j); String
+		 * nf = g.getRealName(fo); text.append(n + " -> " + nf); if (cost != 0) {
+		 * text.append(" [ label=" + cost + "]"); } text.append("\n"); } }
+		 * text.append("}"); writeDotFile(fname, text);
+		 */
 		try {
 			FileWriter o = new FileWriter(fname);
-			GraphTest.GraphType t= g.getType();
+			GraphTest.GraphType t = g.getType();
 			o.write("## jagadeesh");
-			o.write("dot - tpdf"+fname+"-o"+fname+".pdf\n");
+			o.write("dot - tpdf" + fname + "-o" + fname + ".pdf\n");
 			o.write("digraph g{\n");
-			if(t==GraphTest.GraphType.UNDIRECTED||t==GraphTest.GraphType.WEIGHTED_UNDIRECTED) {
-				o.write("edge [dir=none, color=red]|\n");
-			}else {
+			if (t == GraphTest.GraphType.UNDIRECTED || t == GraphTest.GraphType.WEIGHTED_UNDIRECTED) {
+				o.write("edge [dir=none, color=red]\n");
+			} else {
 				o.write("edge [color=red]\n");
 			}
-			
-			int n=g.getnumV();
+
+			int n = g.getnumV();
 			for (int i = 0; i < g.getnumV(); i++) {
-				String p1=g.getNodeRealName(i);
-				int nf=g.numFanout(i);
+				String p1 = g.getNodeRealName(i);
+				int nf = g.numFanout(i);
 				for (int j = 0; j < nf; j++) {
-					int k =g.getNodeFanout(i, j);
-					String p2=g.getNodeRealName(k);
-					double w=g.getNodeFanoutEdgeWeight(i, j);
-					if((t==GraphTest.GraphType.WEIGHTED_UNDIRECTED)||(t==GraphTest.GraphType.WEIGHTED_DIRECTED)) {
-						if((t==GraphTest.GraphType.WEIGHTED_DIRECTED)||(i<k)){
-							o.write("  "+p1+" -> " +p2+" [label = "+w+"]\n");
+					int k = g.getNodeFanout(i, j);
+					String p2 = g.getNodeRealName(k);
+					double w = g.getNodeFanoutEdgeWeight(i, j);
+					if ((t == GraphTest.GraphType.WEIGHTED_UNDIRECTED)
+							|| (t == GraphTest.GraphType.WEIGHTED_DIRECTED)) {
+						if ((t == GraphTest.GraphType.WEIGHTED_DIRECTED) || (i < k)) {
+							o.write("  " + p1 + " -> " + p2 + " [label = " + w + "]\n");
 						}
-					}else {
-						if((t==GraphTest.GraphType.DIRECTED)||(i<k)) {
-							o.write("  "+p1+" -> "+p2+"\n");
+					} else {
+						if ((t == GraphTest.GraphType.DIRECTED) || (i < k)) {
+							o.write("  " + p1 + " -> " + p2 + "\n");
 						}
 					}
 				}
-				
-			}
 
-		}catch(Exception ex){
-			
+			}
+			o.write("}");
+			o.flush();
+			o.close();
+
+		} catch (Exception ex) {
+
 		}
 	}
 

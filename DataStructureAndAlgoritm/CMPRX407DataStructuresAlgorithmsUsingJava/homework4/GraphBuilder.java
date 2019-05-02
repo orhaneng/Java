@@ -51,7 +51,7 @@ class GraphBuilder {
 						g.u.myassert((t == GraphTest.GraphType.UNDIRECTED) || (t == GraphTest.GraphType.DIRECTED));
 						numlines++;
 					} else {
-						++numlines;
+						++notreadlines;
 					}
 					if (l == 2 || l == 3) {
 						for (int j = 0; j < 2; j++) {
@@ -65,7 +65,7 @@ class GraphBuilder {
 						}
 						g.createEdge(p1, p2, w, true);
 						g.createEdge(p2, p1, w, false);
-						if (((t == GraphTest.GraphType.UNDIRECTED) || (t == GraphTest.GraphType.WEIGHTED_DIRECTED))) {
+						if (((t == GraphTest.GraphType.UNDIRECTED) || (t == GraphTest.GraphType.WEIGHTED_UNDIRECTED))) {
 							g.createEdge(p2, p1, w, true);
 							g.createEdge(p1, p2, w, false);
 						}
