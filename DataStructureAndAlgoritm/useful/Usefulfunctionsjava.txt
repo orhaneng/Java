@@ -99,6 +99,7 @@ first , we have to know the bitwise XOR in java
 0 ^ N = N
 N ^ N = 0
 for(int i:nums) res^=i;
+a[3] ^= (1 << 5) // upper case
 
 
 

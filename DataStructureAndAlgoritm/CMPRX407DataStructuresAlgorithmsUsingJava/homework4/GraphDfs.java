@@ -45,7 +45,10 @@ class GraphDfs {
 	}
 
 	private void dfsAlg() {
-		//System.out.println(t);
+		System.out.println(t);
+		System.out.println("Num Vertices =" + g.getnumV());
+		System.out.println("Num Edges =" + g.getnumE());
+
 		String[] colorArr = new String[g.getnumV()];
 		for (int i = 0; i < colorArr.length; i++) {
 			colorArr[i] = Colors.GREEN.toString();
@@ -55,12 +58,13 @@ class GraphDfs {
 		helper(colorArr, startingId);
 
 		reverseArray(dfsorder);
-
-		//for (int i = 0; i < dfsorder.length; i++) {
-		//	System.out.print(g.getNodeRealName(dfsorder[i]) + "-");
-		//}
-		//System.out.println();
-		//System.out.println("workdone" + work[0]);
+		System.out.println("Work Done = " + work[0]);
+		System.out.println("Has Cycle = " +cycle[0]);
+		System.out.print("DFS topological order = ");
+		for (int i = 0; i < dfsorder.length; i++) {
+			System.out.print(g.getNodeRealName(dfsorder[i]) + " ");
+		}
+		System.out.println();
 
 	}
 
@@ -82,7 +86,6 @@ class GraphDfs {
 			int nf = g.numFanout(nodeIndex);
 			for (int j = 0; j < nf; j++) {
 				int k = g.getNodeFanout(nodeIndex, j);
-				String name = g.getNodeRealName(k);
 				work[0] = work[0] + 1;
 				helper(colorArr, k);
 				work[0] = work[0] + 1;
@@ -104,29 +107,11 @@ class GraphDfs {
 				|| g.getType() == GraphTest.GraphType.WEIGHTED_DIRECTED)) {
 
 			cycle[0] = true;
-			//System.out.println("cycle");
 			work[0] = work[0] - 1;
 			return;
 		} else if (colorArr[nodeIndex] == Colors.RED.toString()) {
 
 		}
-	}
-
-	private boolean controlUnvisitedV(int k, String[] colorArr) {
-		String name = g.getNodeRealName(k);
-		int nf = g.numFanin(k);
-		for (int j = 0; j < nf; j++) {
-			int index = g.getNodeFanin(k, j);
-			name = g.getNodeRealName(index);
-			/*
-			 * int fin = g.numFanin(index); for (int i = 0; i < fin; i++) { name =
-			 * g.getNodeRealName(g.getNodeFanin(index, i)); if
-			 * (colorArr[g.getNodeFanin(index, i)] == Colors.GREEN.toString()) { return
-			 * false; } }
-			 */
-		}
-		return true;
-
 	}
 
 	public static void main(String[] args) {
