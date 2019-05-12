@@ -73,7 +73,6 @@ class GraphDot {
 						}
 					}
 				}
-
 			}
 			o.write("}");
 			o.flush();

@@ -61,7 +61,7 @@ class GraphBfs {
 		int startingId = g.graphHasNode(start);
 		Queue<Integer> queue = new LinkedList<Integer>();
 		queue.offer(startingId);
-		nodeList[startingId].from = 0;
+		nodeList[startingId].from = startingId;
 		nodeList[startingId].level = 0;
 		while (!queue.isEmpty()) {
 			int node = queue.poll();
