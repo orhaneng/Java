@@ -40,7 +40,7 @@ public class CoinChange {
 	}
 
 	private static void dp() {
-		// base case 1: for 0 cent we need to give 0 cent
+		// base case 0: for 0 cent we need to give 0 cent
 		m[0] = 0;
 		k[0] = 0;
 
