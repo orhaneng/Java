@@ -30,6 +30,7 @@ class knapsack01 extends knapsack01Base {
 	protected void knapsack(int bagSize, int[] weightArray, int[] costArray, int[] maxans) {
 		wa = weightArray;
 		ca = costArray;
+		this.maxans = maxans;
 		vmatrix = new int[weightArray.length + 1][bagSize + 1];
 		kmatrix = new int[weightArray.length + 1][bagSize + 1];
 
@@ -52,7 +53,10 @@ class knapsack01 extends knapsack01Base {
 				}
 			}
 		}
+		printOutputs();
+	}
 
+	private void printOutputs() {
 		System.out.println("---------vmatrix---------");
 		for (int i = 0; i < vmatrix.length; i++) {
 			for (int j = 0; j < vmatrix[0].length; j++) {
@@ -68,18 +72,18 @@ class knapsack01 extends knapsack01Base {
 			System.out.println();
 		}
 		System.out.print("i = ");
-		for (int i = 0; i < weightArray.length; i++) {
+		for (int i = 0; i < wa.length; i++) {
 			System.out.print(i + 1 + " ");
 		}
 		System.out.println();
 		System.out.print("w = ");
-		for (int i = 0; i < weightArray.length; i++) {
-			System.out.print(weightArray[i] + " ");
+		for (int i = 0; i < wa.length; i++) {
+			System.out.print(wa[i] + " ");
 		}
 		System.out.println();
 		System.out.print("v = ");
-		for (int i = 0; i < costArray.length; i++) {
-			System.out.print(costArray[i] + " ");
+		for (int i = 0; i < ca.length; i++) {
+			System.out.print(ca[i] + " ");
 		}
 		System.out.println();
 		System.out.print("Max Value of " + maxans[0] + " can obtained from items {");
