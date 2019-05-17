@@ -16,14 +16,16 @@ Collections.sort(v1);
 List<List<Integer>> result = new ArrayList<List<Integer>>(); //pay attention how to create
 Arrays.copyOf( //It copies the specified array, truncating or padding with false (if necessary) so the copy has the specified length.
 arr.subList(
+Arrays. equals(tArr,sArr);
 ===================================
 =======STRING============
 Integer.parseInt() //string to numeric
-Character.getNumericValue( //char to numeric
+Charact er.getNumericValue( //char to numeric
 a.charAt( // get spec index from string
 Stringbuilder.reverse()
 String.valueOf( //char to string  //int to string
 Character.getNumericValue(item) char to int 
+Character.isLetterOrDigit(
 char[] gfg = s.toCharArray(); 
 result.toString().trim()
 for (int j = 0; j < 26; j++)
@@ -100,7 +102,8 @@ first , we have to know the bitwise XOR in java
 N ^ N = 0
 for(int i:nums) res^=i;
 a[3] ^= (1 << 5) // upper case
-
+https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently
+																																		
 
 
 ==============QUEUE======================
