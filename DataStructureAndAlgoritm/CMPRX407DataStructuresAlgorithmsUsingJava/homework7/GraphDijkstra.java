@@ -1,4 +1,4 @@
-package homework3.graph;
+package homework7;
 
 import java.util.Comparator;
 import java.util.HashSet;

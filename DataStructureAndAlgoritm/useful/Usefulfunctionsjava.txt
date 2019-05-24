@@ -65,6 +65,7 @@ for (Map.Entry<Integer, Integer> entry : hashmap.entrySet()) {
 	System.out.print("(" + entry.getKey() + "," + entry.getValue() + ") ");
 hashmap.clear();
 hashmap.isEmpty()
+PriorityQueue<Map.Entry<Character, Integer>> queue = new PriorityQueue<Map.Entry<Character, Integer>>(
 
 
 map.containsKey(String.copyValueOf(arr))
@@ -95,6 +96,11 @@ cars.size();
     java.util.Random rand = new java.util.Random();
 
 
+ TreeMap<Integer, List<Integer>> freqMap = new TreeMap<>();
+ map.get(num);
+ //order by key
+ freqMap.containsKey(freq) 
+ Map.Entry<Integer, List<Integer>> entry= map.pollFirstEntry();
 ======BIT MANUPULATION=====
 we use bitwise XOR to solve this problem :
 first , we have to know the bitwise XOR in java
@@ -103,8 +109,12 @@ N ^ N = 0
 for(int i:nums) res^=i;
 a[3] ^= (1 << 5) // upper case
 https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently
+======HEAP===========
+PriorityQueue<Map.Entry<Character, Integer>> pq = new PriorityQueue<>((a, b) -> b.getValue() - a.getValue());
+queue.addAll(map.entrySet());
+Map.Entry e = queue.poll();
+																																	
 																																		
-
 
 ==============QUEUE======================
         Queue<Integer> q = new LinkedList();
