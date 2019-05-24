@@ -26,6 +26,7 @@ class GraphDijkstra {
 	String end;
 	int[] work;
 	double[] cost;
+	int[] parent;
 	int[] w;
 	// boolean[] z;
 	Set<Integer> z;
@@ -43,45 +44,75 @@ class GraphDijkstra {
 		this.cost = cost;
 		this.w = new int[g.getnumV()];
 		this.z = new HashSet<Integer>();
+		this.parent = new int[g.getnumV()];
+
 		minheap = new PriorityQueue<Node>(g.getnumV(), new Node());
 		// You can initialze your data structure here
 		DijkstraAlg();
 	}
 
 	private void DijkstraAlg() {
-		// WRITE CODE
-		// YOU CAN HAVE ANY NUMBER OF private functions
-		/*
-		 * n = number_of_vertices w[n] = weight array initialized to infinite.
-		 * w[startingpoint] = 0 ; z[n] = visited array initilalized to false do { v =
-		 * get_a_vertex_that has_minimum_weight_and_not_visited (w[v] is minimum and
-		 * z[v] is false) if (!v) DONE RETURN for_all_fanouts(v,f) { relax(v,f,w(v,f)) ;
-		 * } z[v] = true ; //v is true }while(1)
-		 */
+		System.out.println("------------" + t + "-----------------");
 		int n = g.getnumV();
 
 		for (int i = 0; i < g.getnumV(); i++) {
 			w[i] = Integer.MAX_VALUE;
-			z.add(i);
+			parent[i] = i;
 		}
+		printout(-1);
 		int startingId = g.graphHasNode(start);
 		w[startingId] = 0;
 		minheap.add(new Node(startingId, 0));
 
 		while (z.size() != g.getnumV()) {
 			int node = minheap.remove().node;
+			String p2 = g.getNodeRealName(node);
 			z.add(node);
 			int nf = g.numFanout(node);
 			for (int j = 0; j < nf; j++) {
 				int k = g.getNodeFanout(node, j);
-				double newDistnance = g.getNodeFanoutEdgeWeight(nf, k) + w[nf];
+				if (z.contains(k))
+					continue;
+				p2 = g.getNodeRealName(k);
+				double newDistnance = g.getNodeFanoutEdgeWeight(node, j) + w[node];
 				if (w[k] > newDistnance) {
 					w[k] = (int) newDistnance;
+					parent[k] = node;
 				}
+
 				minheap.add(new Node(k, w[k]));
 			}
+			printout(node);
 		}
 
+	}
+
+	private void printout(int index) {
+		if (index != -1) {
+			String p2 = g.getNodeRealName(index);
+			System.out.println("Working on Vertex:" + p2);
+		}
+		for (int i = 0; i < w.length; i++) {
+			System.out.print(g.getNodeRealName(i) + "    ");
+		}
+		System.out.println();
+
+		for (int i = 0; i < w.length; i++) {
+			if (z.contains(i))
+				System.out.print("T" + "    ");
+			else
+				System.out.print("F" + "    ");
+		}
+
+		System.out.println();
+		for (double d : w) {
+			System.out.print((((int) d) == Integer.MAX_VALUE ? "L" : d) + "  ");
+		}
+		System.out.println();
+		for (int i = 0; i < parent.length; i++) {
+			System.out.print(g.getNodeRealName(parent[i]) + "    ");
+		}
+		System.out.println();
 	}
 
 	class Node implements Comparator<Node> {
