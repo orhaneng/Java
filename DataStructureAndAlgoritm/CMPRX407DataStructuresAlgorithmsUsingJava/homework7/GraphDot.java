@@ -22,11 +22,19 @@ class GraphDot {
 	private String fname;
 	// You can have any number of private variables
 	private String[][] e;
+	private double[] weight;
 
 	GraphDot(Graph g, String s) {
 		this.g = g;
 		this.fname = s;
 		writeDot();
+	}
+
+	GraphDot(Graph g, String s, double[] weight) {
+		this.g = g;
+		this.fname = s;
+		this.weight = weight;
+		writeDotDijkstra();
 	}
 
 	private void writeDot() {
@@ -66,6 +74,65 @@ class GraphDot {
 							|| (t == GraphTest.GraphType.WEIGHTED_DIRECTED)) {
 						if ((t == GraphTest.GraphType.WEIGHTED_DIRECTED) || (i < k)) {
 							o.write("  " + p1 + " -> " + p2 + " [label = " + w + "]\n");
+						}
+					} else {
+						if ((t == GraphTest.GraphType.DIRECTED) || (i < k)) {
+							o.write("  " + p1 + " -> " + p2 + "\n");
+						}
+					}
+				}
+			}
+			o.write("}");
+			o.flush();
+			o.close();
+
+		} catch (Exception ex) {
+
+		}
+	}
+
+	private void writeDotDijkstra() {
+
+		/*
+		 * StringBuilder text = new StringBuilder(); String[] namelist =
+		 * fname.split("/"); String name = (namelist != null ? namelist[namelist.length
+		 * - 1] : "").replace(".dot", ""); text.append("digraph " + name + " {");
+		 * text.append("\n"); for (int i = 0; i < g.getnumV(); i++) { String n =
+		 * g.getRealName(i); for (int j = 0; j < g.numFanout(i); j++) { int fo =
+		 * g.getNodeFanout(i, j); double cost = g.getNodeFanoutEdgeWeight(i, j); String
+		 * nf = g.getRealName(fo); text.append(n + " -> " + nf); if (cost != 0) {
+		 * text.append(" [ label=" + cost + "]"); } text.append("\n"); } }
+		 * text.append("}"); writeDotFile(fname, text);
+		 */
+		try {
+			FileWriter o = new FileWriter(fname);
+			GraphTest.GraphType t = g.getType();
+			o.write("## jagadeesh");
+			o.write("dot - tpdf" + fname + "-o" + fname + ".pdf\n");
+			o.write("digraph g{\n");
+			if (t == GraphTest.GraphType.UNDIRECTED || t == GraphTest.GraphType.WEIGHTED_UNDIRECTED) {
+				o.write("edge [dir=none, color=red]\n");
+			} else {
+				o.write("edge [color=red]\n");
+			}
+
+			int n = g.getnumV();
+			for (int i = 0; i < g.getnumV(); i++) {
+				String p1 = g.getNodeRealName(i);
+				int nf = g.numFanout(i);
+				for (int j = 0; j < nf; j++) {
+					int k = g.getNodeFanout(i, j);
+					String p2 = g.getNodeRealName(k);
+					double w = g.getNodeFanoutEdgeWeight(i, j);
+					if ((t == GraphTest.GraphType.WEIGHTED_UNDIRECTED)
+							|| (t == GraphTest.GraphType.WEIGHTED_DIRECTED)) {
+						if ((t == GraphTest.GraphType.WEIGHTED_DIRECTED) || (i < k)) {
+							if(weight[k]==0.0)
+							o.write("  " + p1 + " -> " + p2 + " [label = \"" +(int) w + " " + weight[i] + "\"]\n");
+							else
+								o.write("  " + p1 + " -> " + p2 + " [label = \"" + (int)w + " " + weight[k] + "\"]\n");
+
+								
 						}
 					} else {
 						if ((t == GraphTest.GraphType.DIRECTED) || (i < k)) {

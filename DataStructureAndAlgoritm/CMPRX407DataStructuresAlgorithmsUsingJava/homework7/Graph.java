@@ -300,6 +300,9 @@ class Graph {
 	public void writeDot(String s) {
 		GraphDot b = new GraphDot(this,s);
 	}
+	public void writeDotDijkstra(String s,double[] weight) {
+		GraphDot b = new GraphDot(this,s,weight);
+	}
 
 	public void dfs(String t, String start, boolean[] cycle, int [] work, int [] size, int [] dfsorder) {
 		GraphDfs b = new GraphDfs(t,this,start,cycle,work,size,dfsorder);
