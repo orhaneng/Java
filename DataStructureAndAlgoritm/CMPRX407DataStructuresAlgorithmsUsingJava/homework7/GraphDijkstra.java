@@ -54,7 +54,8 @@ class GraphDijkstra {
 
 	private void DijkstraAlg() {
 		System.out.println("------------" + t + "-----------------");
-		int n = g.getnumV();
+		int n = g.getnumV();  
+		
 
 		for (int i = 0; i < g.getnumV(); i++) {
 			w[i] = Integer.MAX_VALUE;
