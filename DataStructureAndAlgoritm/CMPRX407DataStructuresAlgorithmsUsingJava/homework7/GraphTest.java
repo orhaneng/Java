@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 
 class GraphTest {
-	private static final String inputFileBase = "/Users/omerorhan/Desktop/UCSC/Data Structures with Java/homework/graphexamples/";
-	private static final String outputFileBase = "/Users/omerorhan/Desktop/UCSC/Data Structures with Java/homework/graphexamples/fig/";
+	private static final String inputFileBase = "C:/Users/omer/Desktop/UCSC/Data Structures with Java/homework/graphexamples/";
+	private static final String outputFileBase = "C:/Users/omer/Desktop/UCSC/Data Structures with Java/homework/graphexamples/fig/";
 	/*----------YOU CANNOT CHANGE ANYTHING BELOW ----------------------------*/
 	private static final IntUtil u = new IntUtil();
 
