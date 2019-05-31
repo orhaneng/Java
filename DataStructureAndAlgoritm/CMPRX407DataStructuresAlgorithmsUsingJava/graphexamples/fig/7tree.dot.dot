@@ -1,0 +1,16 @@
+## jagadeeshdot - tpdfC:/Users/omer/Desktop/UCSC/Data Structures with Java/homework/graphexamples/fig/7tree.dot.dot-oC:/Users/omer/Desktop/UCSC/Data Structures with Java/homework/graphexamples/fig/7tree.dot.dot.pdf
+digraph g{
+edge [color=red]
+  0 -> 2 [label = "5 5.0"]
+  0 -> 3 [label = "3 3.0"]
+  0 -> 1 [label = "14 9.0"]
+  2 -> 5 [label = "2 7.0"]
+  2 -> 4 [label = "3 8.0"]
+  3 -> 2 [label = "11 5.0"]
+  3 -> 4 [label = "7 8.0"]
+  3 -> 1 [label = "6 9.0"]
+  1 -> 6 [label = "6 13.0"]
+  1 -> 4 [label = "7 8.0"]
+  4 -> 6 [label = "5 13.0"]
+  5 -> 6 [label = "7 13.0"]
+}

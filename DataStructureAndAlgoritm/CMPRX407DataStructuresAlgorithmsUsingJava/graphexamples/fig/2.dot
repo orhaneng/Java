@@ -1,0 +1,9 @@
+## jagadeeshdot - tpdf/Users/omerorhan/Desktop/UCSC/Data Structures with Java/homework/graphexamples/fig/2.dot-o/Users/omerorhan/Desktop/UCSC/Data Structures with Java/homework/graphexamples/fig/2.dot.pdf
+digraph g{
+edge [color=red]
+  1 -> 2
+  1 -> 3
+  2 -> 4
+  3 -> 4
+  4 -> 5
+}
