@@ -42,7 +42,7 @@ class GraphDijkstra {
 		this.g = g;
 		this.start = start;
 		this.end = end;
-		this.work = work;
+		this.work = work; 
 		this.cost = cost;
 		this.w = new double[g.getnumV()];
 		this.z = new HashSet<Integer>();
@@ -73,7 +73,7 @@ class GraphDijkstra {
 			p2 = g.getNodeRealName(node);
 			if (z.contains(node))
 				continue;
-			z.add(node);
+			z.add(node); 
 			int nf = g.numFanout(node);
 			for (int j = 0; j < nf; j++) {
 				int k = g.getNodeFanout(node, j);

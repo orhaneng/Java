@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class eDriving {
 
-	final static String path = "/Users/omerorhan/git/Java/DataStructureAndAlgoritm/Edriving/bbb.csv";
+	final static String path = "C:/Users/omer/Desktop/UCSC/CMPR.X416.(19) Python for Programmers/Edriving/bbb.csv";
 	static List<List<String>> records = new ArrayList<>();
 
 	static List<Employee> employeeList = new ArrayList<eDriving.Employee>();
@@ -84,6 +84,7 @@ public class eDriving {
 		}
 	}
 
+	
 	private static void getHowManyDepartments() {
 		System.out.println("2-HOW MANY DEPARTMENTS");
 		HashSet<String> departments = new HashSet<String>();
@@ -137,8 +138,6 @@ public class eDriving {
 				unfair.put(employee.department, subs - employee.emp_salary);
 			}
 		}
-		
-		
 
 		for (Map.Entry<String, Double> entry : unfair.entrySet()) {
 			unfair.put(entry.getKey(), Math.abs(entry.getValue()));
