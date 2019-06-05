@@ -10,7 +10,7 @@ package homework8;
 
 public class HauffmanTest{
 	//CHANGE ONLY THIS LINE
-	private static final String BASE = "C:\\work\\java\\fig\\"  ;
+	private static final String BASE = "C:\\Users\\omer\\Desktop\\UCSC\\Data Structures with Java\\homework\\graphexamples\\fig\\"  ;
   private static final IntUtil u = new IntUtil();
   
   public static void test1(String s, boolean show, String dotfilename) {

@@ -4,13 +4,16 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Hauffman {
 	String dotfilename;
 	String s;
+
 	private class HauffmanNode {
 		char ch;
 		int value;
@@ -28,8 +31,8 @@ public class Hauffman {
 	}
 
 	public Hauffman(String s, boolean show, String dotfilename) {
-		this.dotfilename=dotfilename;
-		this.s=s;
+		this.dotfilename = dotfilename;
+		this.s = s;
 		Map<Character, Integer> map = new HashMap();
 
 		System.out.println("============" + s + "==========");
@@ -61,8 +64,8 @@ public class Hauffman {
 
 		for (HauffmanNode hauffmanNode : list) {
 			if (hauffmanNode.ch != '-')
-				System.out.println("Leaf      node " + hauffmanNode.id + " Character is " + hauffmanNode.ch + " Weight is "
-						+ hauffmanNode.value);
+				System.out.println("Leaf      node " + hauffmanNode.id + " Character is " + hauffmanNode.ch
+						+ " Weight is " + hauffmanNode.value);
 			else
 				System.out.println("Internal  node " + hauffmanNode.id + ": Left "
 						+ (hauffmanNode.left.ch == '-' ? ' ' : hauffmanNode.left.ch) + "(" + hauffmanNode.left.value
@@ -70,15 +73,15 @@ public class Hauffman {
 						+ hauffmanNode.right.value + ") Weight is " + hauffmanNode.value);
 
 		}
-		System.out.println("==========Tree has "+list.size()+" nodes================");
+		System.out.println("==========Tree has " + list.size() + " nodes================");
 
-		// printLeafs(root);
+		writeDot(root);
 	}
 
-	private void printLeafs(HauffmanNode root) {
+	private void printforDot(HauffmanNode root) {
 		if (root == null)
 			return;
-		printLeafs(root.right);
+		printforDot(root.right);
 		if (root.left == null && root.right == null) {
 			System.out.println("Leaf  node " + root.id + " Character is " + root.ch + " Weight is " + root.value);
 		}
@@ -86,18 +89,30 @@ public class Hauffman {
 			System.out.println("Internal  node " + root.id + " Character is " + root.ch + " Weight is " + root.value);
 		}
 
-		printLeafs(root.left);
+		printforDot(root.left);
 
 	}
-	
-	private void writeDot() {
+
+	private void writeDot(HauffmanNode root) {
 		try {
 			FileWriter o = new FileWriter(dotfilename);
-			o.write("## jagadeesh"); 
+			o.write("## jagadeesh");
 			o.write("dot - tpdf" + dotfilename + "-o" + dotfilename + ".pdf\n");
 			o.write("digraph g{\n");
-			o.write("label = "+s+"\n");
-
+			o.write("label = \"" + s + "\"\n");
+			
+			Queue<HauffmanNode> queue= new LinkedList<Hauffman.HauffmanNode>();
+			queue.add(root);
+			while(!queue.isEmpty()) {
+				HauffmanNode node = queue.poll();
+				if(node.left!=null) {
+					queue.add(node.left);
+					o.write("\""+node.id+"\\n"+node.value+"\" ->\""+node.left.id+"\\n"+node.left.value+(node.left.ch=='-'?"":" \\n "+node.left.ch)+"\""+" [color=red] \n");
+				}if(node.right!=null) {
+					queue.add(node.right);
+					o.write("\""+node.id+"\\n"+node.value+"\" ->\""+node.right.id+"\\n"+node.right.value+(node.right.ch=='-'?"":" \\n "+node.right.ch)+"\""+" [color=blue] \n");
+				}
+			}
 			o.write("}");
 			o.flush();
 			o.close();
