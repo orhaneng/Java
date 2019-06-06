@@ -10,6 +10,17 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+/*
+ * Functions;
+ * HauffmanNode - definition of Node
+ * Hauffman - main function including create queue, list, node
+ * writeDot() create Dot files
+ * HashCode(  put hashcode in map with inorder traversal
+ * decode() decode string
+ * encode() encode string 
+ * Mycomparator - comparator class for priorityqueue
+ */
+
 public class Hauffman {
 	String dotfilename;
 	String s;
@@ -33,7 +44,7 @@ public class Hauffman {
 		}
 	}
 
-	public Hauffman(String s, boolean show, String dotfilename) {
+	public Hauffman(String s, boolean show, String dotfilename) { // Time O(NLOGN) SPACE O(N)
 		this.dotfilename = dotfilename;
 		this.s = s;
 		Map<Character, Integer> map = new HashMap<Character, Integer>();
@@ -43,9 +54,9 @@ public class Hauffman {
 			map.put(ch, map.getOrDefault(ch, 0) + 1);
 		}
 		PriorityQueue<HauffmanNode> queue = new PriorityQueue<HauffmanNode>(s.length(), new MyComparator());
-
 		int count = 0;
-		List<HauffmanNode> list = new ArrayList();
+		List<HauffmanNode> list = new ArrayList<HauffmanNode>();
+		// add nodes to queue
 		for (Map.Entry<Character, Integer> entry : map.entrySet()) {
 			HauffmanNode node = new HauffmanNode(entry.getValue(), null, null, entry.getKey(), ++count);
 			System.out.println(entry.getKey() + " occurs " + entry.getValue() + " times");
@@ -141,8 +152,7 @@ public class Hauffman {
 		}
 	}
 
-
-	public String decode() {
+	public String decode() { // TIME O(L) N IS DECODE TEXT LENGTH SPACE (N) INPUT STRING LENGTH
 		StringBuilder text = new StringBuilder();
 		HauffmanNode node = root;
 		for (int i = 0; i < encodeText.length();) {
@@ -166,7 +176,7 @@ public class Hauffman {
 		return text.toString();
 	}
 
-	public String encode() {
+	public String encode() { // TIME O(N) N IS INPUT TEXT LENGTH SPACE (L) ENCODE STRING LENGTH
 		StringBuilder result = new StringBuilder();
 		for (char item : s.toCharArray()) {
 			result.append(keys.get(item));
@@ -178,7 +188,7 @@ public class Hauffman {
 		encodeText = result.toString();
 		return result.toString();
 	}
-	
+
 	class MyComparator implements Comparator<HauffmanNode> {
 		@Override
 		public int compare(HauffmanNode x, HauffmanNode y) {
