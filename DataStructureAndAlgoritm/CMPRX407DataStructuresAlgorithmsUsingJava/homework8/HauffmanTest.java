@@ -28,12 +28,12 @@ public class HauffmanTest{
   
   public static void testbed() {
     boolean show = true ;
-    //test1("a",show,BASE + "1.dot");
-    //test1("aba",show,BASE+"2.dot");
-    //test1("aaabbggggghhhhaaaggggaaaaa_+@#",show,BASE +"3.dot");
-    //test1("A quick brown fox jumps over the lazy dog",show,BASE +"4.dot");
-    //test1("Pack my box with five dozen liquor jugs",show, BASE + "5.dot");
-    //test1("Long years ago we made a tryst with destiny, and now the time comes when we shall redeem our pledge, not wholly or in full measure, but very substantially.At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom. A moment comes, which comes but rarely in history, when we step out from the old to the new, when an age ends, and when the soul of a nation, long suppressed, finds utterance.",show,BASE +"6.dot");
+    test1("a",show,BASE + "1.dot");
+    test1("aba",show,BASE+"2.dot");
+    test1("aaabbggggghhhhaaaggggaaaaa_+@#",show,BASE +"3.dot");
+    test1("A quick brown fox jumps over the lazy dog",show,BASE +"4.dot");
+    test1("Pack my box with five dozen liquor jugs",show, BASE + "5.dot");
+    test1("Long years ago we made a tryst with destiny, and now the time comes when we shall redeem our pledge, not wholly or in full measure, but very substantially.At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom. A moment comes, which comes but rarely in history, when we step out from the old to the new, when an age ends, and when the soul of a nation, long suppressed, finds utterance.",show,BASE +"6.dot");
     test1("Baa, baa, black sheep, have you any wool?",show,BASE + "7.dot") ;
 
     if (show) {
