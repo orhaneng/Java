@@ -43,6 +43,7 @@ public class GenerateParentheses {
 		}
 
 		public void helper(List<String> list, int n, String text, int in, int out) {
+			System.out.println(text);
 			if (text.length() == n * 2) {
 				list.add(text.toString());
 				return;
