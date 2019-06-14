@@ -1,7 +1,5 @@
 package LinkedList;
 
-import LinkedList.SortList.ListNode;
-
 public class SortList {
 
 	public static void main(String[] args) {
@@ -66,39 +64,40 @@ public class SortList {
 		}
 
 		public ListNode merge(ListNode left, ListNode right) {
-			ListNode root=new ListNode(1);
-			ListNode res=root;
+			ListNode root = new ListNode(0), res = root;
+
 
 			if (left.val < right.val) {
-				res = new ListNode(left.val);
+				res.next = left;
 				left = left.next;
 			} else {
-				res =  new ListNode(right.val);
+				res.next = right;
 				right = right.next;
 			}
+			res=res.next;
 			while (right != null && left != null) {
 				if (left.val < right.val) {
-					res.next = new ListNode( left.val);
+					res.next = left;
 					left = left.next;
 					res = res.next;
 				} else {
-					res.next =  new ListNode(right.val);
+					res.next = right;
 					right = right.next;
 					res = res.next;
 				}
 			}
 			while (right != null) {
-				res.next =  new ListNode(right.val);
+				res.next = right;
 				res = res.next;
 				right = right.next;
 
 			}
 			while (left != null) {
-				res.next =  new ListNode(left.val);
+				res.next = left;
 				res = res.next;
 				left = left.next;
 			}
-			return root;
+			return root.next;
 		}
 	}
 
