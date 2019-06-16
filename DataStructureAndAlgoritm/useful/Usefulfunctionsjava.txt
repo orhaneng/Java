@@ -17,6 +17,8 @@ List<List<Integer>> result = new ArrayList<List<Integer>>(); //pay attention how
 Arrays.copyOf( //It copies the specified array, truncating or padding with false (if necessary) so the copy has the specified length.
 arr.subList(
 Arrays. equals(tArr,sArr);
+List<String> list = Arrays.asList("sss","dsds");
+
 ===================================
 =======STRING============
 Integer.parseInt() //string to numeric
