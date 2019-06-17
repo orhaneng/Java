@@ -95,7 +95,6 @@ public class eDriving {
 		System.out.println("1-TOP 10 EMPLOYEES");
 		employeeList.stream().sorted((Employee o1, Employee o2) -> o2.emp_salary.compareTo(o1.emp_salary))
 				.collect(Collectors.toList()).subList(0, 10).stream().forEach(System.out::println);
-		;
 	}
 
 	private static void getHowManyDepartments() {
@@ -109,7 +108,6 @@ public class eDriving {
 				.collect(
 						Collectors.groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)))
 				.entrySet().stream().forEach(System.out::println);
-		;
 	}
 
 	private static void unfairnessBetweenGendersByDepartments() {
