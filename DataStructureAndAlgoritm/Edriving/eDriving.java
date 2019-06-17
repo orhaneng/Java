@@ -2,10 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,13 +14,22 @@ public class eDriving {
 	static List<List<String>> records = new ArrayList<>();
 
 	static List<Employee> employeeList = new ArrayList<eDriving.Employee>();
- 
+
 	public static class Employee {
 		public int emp_id;
 		public String emp_name;
 		public String gender;
 		public String department;
 		public String job_title;
+
+		public String getJob_title() {
+			return job_title;
+		}
+
+		public void setJob_title(String job_title) {
+			this.job_title = job_title;
+		}
+
 		public Double emp_salary;
 
 		public Employee(int emp_id, String emp_name, String gender, String department, String job_title,
@@ -43,9 +49,14 @@ public class eDriving {
 		public String getDepartment() {
 			return department;
 		}
+
+		public String getGender() {
+			return gender;
+		}
+
 		@Override
 		public String toString() {
-			return emp_name + " - " + emp_salary;
+			return emp_name + " - " + emp_salary + " - " + gender;
 		}
 	}
 
@@ -82,65 +93,43 @@ public class eDriving {
 
 	private static void getTop10Employess() {
 		System.out.println("1-TOP 10 EMPLOYEES");
-		employeeList.stream().sorted((Employee o1, Employee o2) -> o2.emp_salary
-				.compareTo(o1.emp_salary))
-				.collect(Collectors.toList()).subList(0, 10).stream().forEach(System.out::println);;
+		employeeList.stream().sorted((Employee o1, Employee o2) -> o2.emp_salary.compareTo(o1.emp_salary))
+				.collect(Collectors.toList()).subList(0, 10).stream().forEach(System.out::println);
+		;
 	}
-	private static void getHowManyDepartments() { 
-		System.out.println("2-Department count="+employeeList.stream().map(p1->p1.getDepartment()).distinct().count());
+
+	private static void getHowManyDepartments() {
+		System.out.println(
+				"2-Department count=" + employeeList.stream().map(p1 -> p1.getDepartment()).distinct().count());
 	}
 
 	private static void getAvarageSalaryPerDepartment() {
 		System.out.println("3-AVARAGE SALARY PER DEPARTMENT");
 		employeeList.stream()
-				.collect(Collectors.
-						groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)))
-				.entrySet().stream().forEach(System.out::println);;
+				.collect(
+						Collectors.groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)))
+				.entrySet().stream().forEach(System.out::println);
+		;
 	}
 
 	private static void unfairnessBetweenGendersByDepartments() {
 		System.out.println("4-UNFAIRNESS");
-		HashMap<String, Double> unfair = new HashMap<String, Double>();
-		Double zero = 0.0;
-
-		for (Employee employee : employeeList) {
-			Double subs = unfair.getOrDefault(employee.department, zero);
-			if (employee.gender.equals("Male")) {
-				unfair.put(employee.department, subs + employee.emp_salary);
-			} else {
-				unfair.put(employee.department, subs - employee.emp_salary);
-			}
+		Map<String, Double> map = new HashMap<String, Double>();
+		Map<String, Map<String, Double>> list = employeeList.stream()
+				.collect(Collectors.groupingBy(Employee::getDepartment,
+						Collectors.groupingBy(Employee::getGender, Collectors.averagingDouble(Employee::getSalary))));
+		for (Map.Entry<String, Map<String, Double>> entry : list.entrySet()) {
+			map.put(entry.getKey(), Math.abs(entry.getValue().get("Male") - entry.getValue().get("Female")));
 		}
-
-		for (Map.Entry<String, Double> entry : unfair.entrySet()) {
-			unfair.put(entry.getKey(), Math.abs(entry.getValue()));
-		}
-		List<Double> mapValues = new ArrayList<Double>(unfair.values());
-		Collections.sort(mapValues, Collections.reverseOrder());
-		for (Map.Entry<String, Double> entry : unfair.entrySet()) {
-			if (entry.getValue().equals(mapValues.get(0)) || entry.getValue().equals(mapValues.get(1))) {
-				System.out.println(entry.getKey());
-			}
-		}
+		System.out.println(map.entrySet().stream().max(Map.Entry.<String, Double>comparingByValue()).get().getKey());
 	}
 
 	private static void jobTitleThatAttracts() {
 		System.out.println("5-JOB TITLE THAT ATTRACTS MALES MOSTLY");
-		Map<String, Integer> attractsMale = new HashMap<String, Integer>();
-		for (Employee employee : employeeList) {
-			int count = attractsMale.getOrDefault(employee.job_title, 0);
-			if (employee.gender.equals("Male")) {
-				attractsMale.put(employee.job_title, ++count);
-			}
-		}
-		List<Integer> mapValues = new ArrayList<Integer>(attractsMale.values());
-		Collections.sort(mapValues, Collections.reverseOrder());
+		System.out.println(employeeList.stream().filter(p -> p.gender.equals("Male"))
+				.collect(Collectors.groupingBy(Employee::getJob_title, Collectors.averagingDouble(Employee::getSalary)))
+				.entrySet().stream().max(Map.Entry.<String, Double>comparingByValue()).get().getKey());
 
-		for (Map.Entry<String, Integer> entry : attractsMale.entrySet()) {
-			if (entry.getValue().equals(mapValues.get(0))) {
-				System.out.println(entry.getKey());
-			}
-		}
 	}
 
 }
