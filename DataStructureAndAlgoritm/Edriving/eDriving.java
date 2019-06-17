@@ -2,13 +2,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class eDriving {
 
@@ -16,7 +17,7 @@ public class eDriving {
 	static List<List<String>> records = new ArrayList<>();
 
 	static List<Employee> employeeList = new ArrayList<eDriving.Employee>();
-
+ 
 	public static class Employee {
 		public int emp_id;
 		public String emp_name;
@@ -41,6 +42,10 @@ public class eDriving {
 
 		public String getDepartment() {
 			return department;
+		}
+		@Override
+		public String toString() {
+			return emp_name + " - " + emp_salary;
 		}
 	}
 
@@ -77,52 +82,20 @@ public class eDriving {
 
 	private static void getTop10Employess() {
 		System.out.println("1-TOP 10 EMPLOYEES");
-		Comparator<Employee> compareBySalary = (Employee o1, Employee o2) -> o1.emp_salary.compareTo(o2.emp_salary);
-		Collections.sort(employeeList, compareBySalary);
-		for (int i = employeeList.size() - 1; i > employeeList.size() - 10; i--) {
-			System.out.println(employeeList.get(i).emp_name + " - " + employeeList.get(i).emp_salary);
-		}
+		employeeList.stream().sorted((Employee o1, Employee o2) -> o2.emp_salary
+				.compareTo(o1.emp_salary))
+				.collect(Collectors.toList()).subList(0, 10).stream().forEach(System.out::println);;
 	}
-
-	
-	private static void getHowManyDepartments() {
-		System.out.println("2-HOW MANY DEPARTMENTS");
-		HashSet<String> departments = new HashSet<String>();
-		for (Employee employee : employeeList) {
-			departments.add(employee.department);
-		}
-		System.out.println("Department count=" + departments.size());
+	private static void getHowManyDepartments() { 
+		System.out.println("2-Department count="+employeeList.stream().map(p1->p1.getDepartment()).distinct().count());
 	}
 
 	private static void getAvarageSalaryPerDepartment() {
-		/*
-		 * final Map<Double, List<Employee>> salaryPerDepartment = employeeList.stream()
-		 * .collect(Collectors.groupingBy(Employee::getSalary));
-		 * 
-		 * for(Map.Entry<Double, List<Employee>> entry:salaryPerDepartment.entrySet()) {
-		 * System.out.println("Department:"+entry.getValue()+"- Salary:"+entry.getKey())
-		 * ; }
-		 */
-
 		System.out.println("3-AVARAGE SALARY PER DEPARTMENT");
-
-		Double zero = 0.0;
-		HashMap<String, Integer> departments = new HashMap<String, Integer>();
-		HashMap<String, Double> averageBySalary = new HashMap<String, Double>();
-
-		for (Employee employee : employeeList) {
-			int count = departments.getOrDefault(employee.department, 0);
-			departments.put(employee.department, ++count);
-			Double salary = averageBySalary.getOrDefault(employee.department, zero);
-			averageBySalary.put(employee.department, salary + employee.emp_salary);
-		}
-
-		for (Map.Entry<String, Double> entry : averageBySalary.entrySet()) {
-			int count = departments.get(entry.getKey());
-			averageBySalary.put(entry.getKey(), entry.getValue() / count);
-			System.out.println("Department:" + entry.getKey() + "--" + "Avarage Slary:"
-					+ String.format("%.2f", entry.getValue() / count));
-		}
+		employeeList.stream()
+				.collect(Collectors.
+						groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary)))
+				.entrySet().stream().forEach(System.out::println);;
 	}
 
 	private static void unfairnessBetweenGendersByDepartments() {
