@@ -11,7 +11,7 @@ public class BinaryTreeInorderTraversal {
 		// TODO Auto-generated method stub
 		TreeNode root = new TreeNode(1);
 		// root.left = new TreeNode(2);
-		root.right = new TreeNode(2);
+		root.right = new TreeNode(2); 
 		root.right.left = new TreeNode(3);
 		// root.left.right = new TreeNode(5);
 		System.out.println(inorderTraversal(root));
