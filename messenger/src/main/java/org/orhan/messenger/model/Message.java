@@ -9,6 +9,14 @@ public class Message {
 	private String message;
 	private Date created;
 
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
 	public Message() {
 
 	}

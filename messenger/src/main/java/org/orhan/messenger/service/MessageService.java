@@ -10,12 +10,17 @@ import org.orhan.messenger.model.Message;
 
 public class MessageService {
 
-	private Map<Long, Message> messages = DatabaseClass.getMessages();
+	private static Map<Long, Message> messages = DatabaseClass.getMessages();
 
-	public MessageService() {
-		messages.put(1L,new Message(1,"Hello World","kousihk"));
-		messages.put(2L,new Message(2,"Hello Jersey","kousihk"));
+	static {
+	messages.put(1L,new Message(1,"Hello World","kousihk"));
+	messages.put(2L,new Message(2,"Hello Jersey","kousihk"));
 	}
+	
+	public MessageService() {
+
+	}
+
 	public List<Message> getAllMessages() {
 		return new ArrayList<Message>(messages.values());
 	}
