@@ -1,6 +1,8 @@
 package org.orhan.messenger.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
@@ -8,6 +10,7 @@ public class Message {
 	private long id;
 	private String message;
 	private Date created;
+	private List<Link> links= new ArrayList<>();
 
 	public Date getCreated() {
 		return created;
@@ -52,5 +55,20 @@ public class Message {
 		this.author = author;
 	}
 
+	public List<Link> getLinks() {
+		return links;
+	}
+
+	public void setLinks(List<Link> links) {
+		this.links = links;
+	}
+
 	private String author;
+	
+	public void addLink(String url, String rel) {
+		Link link=new Link();
+		link.setLink(url);
+		link.setRel(rel);
+		links.add(link);
+	}
 }

@@ -26,7 +26,7 @@ import org.orhan.messenger.service.MessageService;
 
 @Path("/messages")
 @Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(value = { MediaType.APPLICATION_JSON, MediaType.TEXT_XML })
 public class MessageResource {
 
 	MessageService messageService = new MessageService();
@@ -42,10 +42,10 @@ public class MessageResource {
 	}
 
 	@POST
-	public Response addMessage(Message message,@Context UriInfo uriInfo){
+	public Response addMessage(Message message, @Context UriInfo uriInfo) {
 		Message newmessage = messageService.addMessage(message);
-		URI uri= uriInfo.getAbsolutePathBuilder().path(String.valueOf(newmessage.getId())).build();
-		//return Response.status(Status.ACCEPTED).entity(newmessage).build();
+		URI uri = uriInfo.getAbsolutePathBuilder().path(String.valueOf(newmessage.getId())).build();
+		// return Response.status(Status.ACCEPTED).entity(newmessage).build();
 		return Response.created(uri).entity(newmessage).build();
 	}
 
@@ -64,8 +64,33 @@ public class MessageResource {
 
 	@GET
 	@Path("/{messageId}")
-	public Message getMessage(@PathParam("messageId") long id) {
-		return messageService.getMessage(id);
+	public Message getMessage(@PathParam("messageId") long id, @Context UriInfo uriInfo) {
+		Message message = messageService.getMessage(id);
+		String uri = getUriForSelf(uriInfo, message);
+		message.addLink(uri, "self");
+		message.addLink(getUriForProfile(uriInfo, message), "profile");
+		message.addLink(getUriForComments(uriInfo, message), "comments");
+		return message;
+	}
+
+	// HATEOAS
+	private String getUriForComments(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder().path(MessageResource.class)
+				.path(MessageResource.class, "getCommentResource").path(CommentResource.class)
+				.resolveTemplate("messageId", message.getId()).build().toString();
+		return uri;
+	}
+
+	private String getUriForProfile(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder().path(ProfileResource.class).path(message.getAuthor()).build()
+				.toString();
+		return uri;
+	}
+
+	private String getUriForSelf(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder().path(MessageResource.class).path(Long.toString(message.getId()))
+				.build().toString();
+		return uri;
 	}
 
 	// http://localhost:8080/messenger/webapi/messages/2/comments
