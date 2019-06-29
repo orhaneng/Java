@@ -13,15 +13,16 @@ public class Profile {
 	private String lastName;
 	private Date created;
 
-	Profile() {
+	public Profile() {
 
 	}
 
-	Profile(long id, String profilName, String firstName, String lastName) {
+	public Profile(long id, String profilName, String firstName, String lastName) {
 		this.id = id;
 		this.profileName = profilName;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.created=new Date();
 	}
 
 	public long getId() {

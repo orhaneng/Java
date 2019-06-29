@@ -1,7 +1,7 @@
 package org.orhan.messenger.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -13,16 +13,33 @@ public class MessageService {
 	private static Map<Long, Message> messages = DatabaseClass.getMessages();
 
 	static {
-	messages.put(1L,new Message(1,"Hello World","kousihk"));
-	messages.put(2L,new Message(2,"Hello Jersey","kousihk"));
+		messages.put(1L, new Message(1, "Hello World", "kousihk"));
+		messages.put(2L, new Message(2, "Hello Jersey", "kousihk"));
 	}
-	
+
 	public MessageService() {
 
 	}
 
 	public List<Message> getAllMessages() {
 		return new ArrayList<Message>(messages.values());
+	}
+
+	public List<Message> getAllMessagesForYear(int year) {
+		List<Message> messageForYear = new ArrayList<Message>();
+		Calendar cal = Calendar.getInstance();
+		for (Message message : messages.values()) {
+			cal.setTime(message.getCreated());
+			if (cal.get(Calendar.YEAR) == year) {
+				messageForYear.add(message);
+			}
+		}
+		return messageForYear;
+	}
+
+	public List<Message> getAllMessagesForPaginated(int start, int size) {
+		List<Message> list = new ArrayList<Message>(messages.values());
+		return list.subList(start, start + size);
 	}
 
 	public Message getMessage(long id) {
